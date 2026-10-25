@@ -1,533 +1,431 @@
-
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="html-root">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electro Ayman - Phones Store</title>
+    <title>ELECTRO AYMAN | الكترو أيمن</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['var(--main-font)', 'sans-serif'] },
-                    colors: {
-                        brand: { 50: '#f9fafb', 100: '#f3f4f6', 200: '#e5e7eb', 500: '#6b7280', 800: '#1f2937', 900: '#000000' },
-                        whatsapp: '#25D366', instagram: '#E1306C'
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --main-font: 'Tajawal'; }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        body { font-family: 'Tajawal', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .gold-gradient { background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gold-bg { background: linear-gradient(135deg, #bf953f, #aa771c); }
+        .gold-border { border-color: #bf953f; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased relative">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between">
 
-    <!-- Top Info Bar -->
-    <div class="bg-brand-900 text-white text-xs py-2 px-4 relative z-50">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-start">
-            <div class="flex items-center gap-4">
-                <span class="flex items-center gap-1 font-medium">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span data-i18n="top_hours">أوقات العمل: من 10 صباحاً حتى 9 ليلاً</span>
-                </span>
-            </div>
-            <div class="flex items-center font-bold tracking-wider text-[10px] sm:text-xs">
-                WWW.ELECTROAYMAN.COM
-            </div>
-        </div>
-    </div>
-
-    <!-- Navbar -->
-    <nav class="glass-effect shadow-sm sticky top-0 z-40 border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                
-                <!-- Logo Code Instead of Image -->
-                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div class="flex items-center gap-2 sm:gap-3" dir="ltr">
-                        <div class="relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-gray-900 to-black rounded-xl shadow-lg border border-gray-800">
-                            <!-- Lightning Icon -->
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                        </div>
-                        <div class="flex flex-col justify-center items-start">
-                            <span class="font-black text-[16px] sm:text-[22px] tracking-wider text-gray-900 leading-none mb-1">
-                                ELECTRO<span class="text-yellow-600">AYMAN</span>
-                            </span>
-                            <span class="text-[8px] sm:text-[10px] text-gray-500 font-bold tracking-wide hidden sm:block" data-i18n="nav_subtitle">بيع وشراء الهواتف الجديدة والمستعملة</span>
-                        </div>
-                    </div>
+    <!-- Top Bar -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-10 h-10 rounded-full gold-bg flex items-center justify-center text-slate-950 font-black text-xl shadow-lg">
+                    <i class="fa-solid fa-bolt"></i>
                 </div>
-
-                <!-- Actions -->
-                <div class="flex items-center gap-2 sm:gap-4 relative">
-                    
-                    <!-- Language Switcher -->
-                    <div class="relative z-50">
-                        <div onclick="toggleLangMenu()" class="flex items-center gap-1 text-gray-600 hover:text-brand-900 font-bold text-xs sm:text-sm bg-gray-100/80 px-2 sm:px-3 py-2 rounded-xl transition-all border border-gray-200 cursor-pointer">
-                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
-                            <span id="current-lang-display" class="hidden sm:inline">العربية</span>
-                        </div>
-                        <div id="langMenuDropdown" class="absolute top-full end-0 mt-1 w-28 bg-white rounded-xl shadow-xl border border-gray-100 hidden overflow-hidden">
-                            <div onclick="setLang('ar')" class="px-4 py-2 hover:bg-gray-50 text-sm font-bold text-end cursor-pointer">العربية</div>
-                            <div onclick="setLang('fr')" class="px-4 py-2 hover:bg-gray-50 text-sm font-bold text-start cursor-pointer border-t border-gray-50">Français</div>
-                            <div onclick="setLang('en')" class="px-4 py-2 hover:bg-gray-50 text-sm font-bold text-start cursor-pointer border-t border-gray-50">English</div>
-                        </div>
-                    </div>
-
-                    <!-- Admin Login Btn -->
-                    <button onclick="openModal('modalLogin')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 p-2 sm:p-2.5 rounded-xl transition-all shadow-sm border border-gray-200">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                    </button>
+                <div>
+                    <h1 class="text-lg font-black tracking-wider gold-gradient">ELECTRO AYMAN</h1>
+                    <span class="text-xs text-slate-400" data-translate="sub_title">بيع وشراء الهواتف الجديدة والمستعملة</span>
                 </div>
             </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <div class="relative bg-brand-900 pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden z-10">
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight" data-i18n="hero_title">
-                أفضل الأجهزة بأحسن الأثمنة<br>في <span class="text-yellow-500">Electro Ayman</span>
-            </h1>
-            <p class="mt-4 max-w-2xl mx-auto text-lg sm:text-xl text-gray-300 font-medium" data-i18n="hero_desc">
-                متخصصون في بيع وشراء الهواتف الذكية الجديدة والمستعملة مع ضمان الجودة والتوصيل لجميع المدن المغربية.
-            </p>
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <!-- Lang Switcher -->
+                <select id="langSwitch" onchange="changeLanguage(this.value)" class="bg-slate-800 text-xs text-slate-200 border border-slate-700 rounded-lg px-2 py-1 focus:outline-none">
+                    <option value="ar">العربية</option>
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                </select>
+
+                <!-- Admin Button -->
+                <button onclick="openAdminLogin()" class="bg-slate-800 hover:bg-slate-700 text-amber-400 p-2 rounded-full border border-slate-700 transition" title="لوحة التحكم">
+                    <i class="fa-solid fa-lock"></i>
+                </button>
+            </div>
         </div>
-    </div>
+    </header>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-16 relative z-20">
-        <!-- Search & Filters -->
-        <div class="bg-white rounded-3xl p-4 sm:p-6 shadow-xl border border-gray-100 mb-12">
-            <div class="flex flex-col md:flex-row gap-4">
-                <div class="flex-1 relative">
-                    <input type="text" id="searchInput" class="w-full bg-gray-50 border border-gray-200 rounded-2xl py-3.5 px-12 text-sm font-bold text-gray-800 outline-none focus:ring-2 focus:ring-brand-900 transition-all" data-i18n="search_ph" placeholder="بحث بالاسم أو الموديل...">
-                    <svg class="w-5 h-5 text-gray-400 absolute top-3.5 start-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </div>
-                <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2 md:pb-0">
-                    <select id="filterBrand" class="bg-gray-50 border border-gray-200 rounded-2xl py-3 px-4 text-sm font-bold text-gray-700 outline-none focus:ring-2 focus:ring-brand-900 min-w-[120px]">
-                        <option value="" data-i18n="all_brands">جميع الماركات</option>
-                        <option value="Apple">Apple</option>
-                        <option value="Samsung">Samsung</option>
-                        <option value="Xiaomi">Xiaomi</option>
-                    </select>
-                    <select id="filterCondition" class="bg-gray-50 border border-gray-200 rounded-2xl py-3 px-4 text-sm font-bold text-gray-700 outline-none focus:ring-2 focus:ring-brand-900 min-w-[120px]">
-                        <option value="" data-i18n="all_conditions">الحالة (الكل)</option>
-                        <option value="جديد" data-i18n="cond_new">جديد</option>
-                        <option value="مستعمل" data-i18n="cond_used">مستعمل</option>
-                    </select>
-                </div>
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <!-- Hero Section -->
+        <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-black mb-3" data-translate="hero_title">أفضل العروض على الهواتف الذكية</h2>
+            <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto" data-translate="hero_desc">جودة عالية، ضمان حقيقي، وتوصيل لجميع مدن المغرب مع الدفع عند الاستلام.</p>
+        </div>
+
+        <!-- Search & Filter -->
+        <div class="bg-slate-900 p-4 rounded-2xl border border-slate-800 mb-8 shadow-xl flex flex-col md:flex-row gap-4 justify-between items-center">
+            <div class="relative w-full md:w-1/3">
+                <i class="fa-solid fa-magnifying-glass absolute right-3 top-3.5 text-slate-400"></i>
+                <input type="text" id="searchInput" oninput="filterProducts()" placeholder="ابحث عن الهاتف (آيفون، سامسونج...)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 pr-10 text-sm focus:outline-none focus:border-amber-500">
+            </div>
+            <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+                <button onclick="filterCategory('all')" class="px-4 py-2 bg-amber-500 text-slate-950 font-bold rounded-xl text-xs whitespace-nowrap">الكل</button>
+                <button onclick="filterCategory('Apple')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs whitespace-nowrap">Apple</button>
+                <button onclick="filterCategory('Samsung')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs whitespace-nowrap">Samsung</button>
+                <button onclick="filterCategory('Xiaomi')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs whitespace-nowrap">Xiaomi</button>
             </div>
         </div>
 
-        <div class="flex items-center justify-between mb-8">
-            <h2 class="text-2xl sm:text-3xl font-black text-brand-900" data-i18n="phones_list">قائمة الهواتف المتوفرة</h2>
-            <span id="resultsCount" class="bg-gray-200 text-gray-800 text-xs font-bold px-3 py-1.5 rounded-full"></span>
+        <!-- Product Grid -->
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Dynamic Products Injected Here -->
         </div>
-
-        <!-- Products Grid -->
-        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <!-- Products will be injected here -->
-        </div>
-    </div>
+    </main>
 
     <!-- Product Details Modal -->
-    <div id="modalProductDetails" class="fixed inset-0 bg-black/70 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm py-10 overflow-y-auto">
-        <div class="bg-white rounded-3xl w-full max-w-4xl shadow-2xl relative my-auto flex flex-col md:flex-row overflow-hidden border border-gray-200">
-            <button onclick="closeModal('modalProductDetails')" class="absolute top-4 start-4 text-gray-400 hover:text-gray-900 transition-colors bg-white/80 backdrop-blur rounded-full p-2 z-10 shadow-sm border border-gray-200">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <div class="md:w-1/2 bg-gray-50 p-8 flex items-center justify-center min-h-[300px] border-b md:border-b-0 md:border-e border-gray-200">
-                <img id="detailImage" src="" alt="Product" class="max-h-80 w-auto object-contain drop-shadow-xl hover:scale-105 transition-transform">
+    <div id="productModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProductModal()" class="absolute left-4 top-4 text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modalContent">
+                <!-- Injected via JS -->
             </div>
-            <div class="md:w-1/2 p-6 md:p-8 flex flex-col">
-                <div class="flex justify-between items-start mb-2">
-                    <span id="detailCondition" class="bg-brand-900 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm"></span>
-                    <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">🛡️ <span id="detailWarranty"></span></span>
-                </div>
-                <p id="detailBrand" class="text-sm text-gray-500 font-bold uppercase tracking-widest mb-1"></p>
-                <h2 id="detailTitle" class="text-2xl md:text-3xl font-black text-gray-900 mb-6 leading-tight" dir="ltr"></h2>
-                
-                <div class="grid grid-cols-2 gap-3 mb-6">
-                    <div class="bg-gray-50 p-3 rounded-2xl border border-gray-100 flex items-center gap-3">
-                        <span class="text-xl">💾</span>
-                        <div><p class="text-[10px] text-gray-500 mb-0.5">التخزين</p><p id="detailStorage" class="font-bold text-gray-900 text-sm" dir="ltr"></p></div>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded-2xl border border-gray-100 flex items-center gap-3">
-                        <span class="text-xl">⚡</span>
-                        <div><p class="text-[10px] text-gray-500 mb-0.5">الرام</p><p id="detailRam" class="font-bold text-gray-900 text-sm" dir="ltr"></p></div>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded-2xl border border-gray-100 flex items-center gap-3">
-                        <span class="text-xl">🎨</span>
-                        <div><p class="text-[10px] text-gray-500 mb-0.5">اللون</p><p id="detailColor" class="font-bold text-gray-900 text-sm"></p></div>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded-2xl border border-gray-100 flex items-center gap-3">
-                        <span class="text-xl">🔋</span>
-                        <div><p class="text-[10px] text-gray-500 mb-0.5">البطارية</p><p id="detailBattery" class="font-bold text-gray-900 text-sm" dir="ltr"></p></div>
-                    </div>
-                </div>
-                
-                <div class="mt-auto border-t border-gray-100 pt-6">
-                    <div class="mb-4">
-                        <p class="text-sm text-gray-500 font-bold mb-1">الثمن النهائي:</p>
-                        <span id="detailPrice" class="text-brand-900 font-black text-3xl tracking-tight"></span>
-                    </div>
-                    <button id="btnOpenCheckout" class="w-full bg-brand-900 hover:bg-gray-800 text-white py-4 rounded-2xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2">
-                        تقديم الطلب 🛒
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Checkout Modal -->
-    <div id="modalCheckout" class="fixed inset-0 bg-black/70 z-[110] hidden flex items-center justify-center px-4 backdrop-blur-sm transition-opacity">
-        <div class="bg-white rounded-3xl p-6 md:p-8 w-full max-w-md shadow-2xl relative border border-gray-200">
-            <button onclick="closeModal('modalCheckout')" class="absolute top-5 start-5 text-gray-400 hover:text-gray-900 bg-gray-100 rounded-full p-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <h3 class="text-2xl font-black text-brand-900 mb-2">تأكيد الطلب</h3>
-            <p class="text-sm text-gray-500 mb-6 font-medium">المرجو إدخال معلوماتك لتأكيد الطلب عبر الواتساب.</p>
-            
-            <form id="checkoutForm" onsubmit="submitOrder(event)" class="space-y-4">
-                <div><input type="text" id="clientName" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" placeholder="الاسم الكامل"></div>
-                <div><input type="tel" id="clientPhone" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="رقم الهاتف: 06XXXXXXXX"></div>
-                <div><textarea id="clientAddress" required rows="2" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" placeholder="العنوان والمدينة..."></textarea></div>
-                <button type="submit" class="w-full bg-whatsapp hover:bg-green-600 text-white rounded-xl py-4 font-bold transition-colors shadow-lg flex items-center justify-center gap-2 mt-4 text-lg">
-                    تأكيد وإرسال عبر الواتساب
-                </button>
-            </form>
         </div>
     </div>
 
     <!-- Admin Login Modal -->
-    <div id="modalLogin" class="fixed inset-0 bg-black/70 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-md">
-        <div class="bg-white rounded-3xl p-6 md:p-8 w-full max-w-md shadow-2xl relative border border-gray-200">
-            <button onclick="closeModal('modalLogin')" class="absolute top-5 start-5 text-gray-400 hover:text-gray-900 bg-gray-100 rounded-full p-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <h3 class="text-2xl font-black text-brand-900 mb-2">لوحة التحكم</h3>
-            <p class="text-sm text-gray-500 mb-6 font-medium">خاص بصاحب المحل فقط.</p>
-            
+    <div id="adminLoginModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 relative">
+            <button onclick="closeAdminLogin()" class="absolute left-4 top-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-xl font-bold mb-4 text-amber-400"><i class="fa-solid fa-lock mr-2"></i> تسجيل دخول المسؤول</h3>
             <div class="space-y-4">
-                <input type="email" id="adminEmail" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="anwar0707181@gmail.com">
-                <input type="password" id="adminPassword" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="كلمة السر">
-                <div class="text-start mt-1">
-                    <button type="button" onclick="forgotPassword()" class="text-xs text-brand-900 font-bold hover:underline">هل نسيت كلمة السر؟</button>
-                </div>
-                <button onclick="handleLogin()" class="w-full bg-brand-900 text-white rounded-xl py-3.5 font-bold hover:bg-gray-800 transition-colors shadow-md mt-2">تسجيل الدخول</button>
-            </div>
-            <!-- Notification Area inside login -->
-            <div id="loginAlert" class="hidden mt-4 text-center text-sm font-bold px-3 py-2 rounded-lg"></div>
-        </div>
-    </div>
-
-    <!-- Admin Dashboard Modal -->
-    <div id="modalAdminDashboard" class="fixed inset-0 bg-gray-100 z-[105] hidden overflow-y-auto">
-        <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 bg-white p-4 sm:p-6 rounded-3xl shadow-sm mb-6 border border-gray-200">
-                <h2 class="text-2xl font-black text-brand-900">لوحة التحكم (Admin Panel)</h2>
-                <div class="flex flex-wrap justify-center gap-3">
-                    <button onclick="openProductForm()" class="bg-brand-900 text-white px-5 py-2.5 rounded-xl font-bold shadow-md">إضافة هاتف +</button>
-                    <button onclick="handleLogout()" class="bg-gray-200 text-gray-800 px-5 py-2.5 rounded-xl font-bold">تسجيل الخروج</button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden overflow-x-auto">
-                <table class="w-full text-right text-sm">
-                    <thead class="bg-gray-50 text-gray-600 font-bold border-b border-gray-200">
-                        <tr>
-                            <th class="p-4">الصورة</th>
-                            <th class="p-4">المنتج</th>
-                            <th class="p-4">الثمن</th>
-                            <th class="p-4">المخزون</th>
-                            <th class="p-4 text-center">إجراءات</th>
-                        </tr>
-                    </thead>
-                    <tbody id="adminProductsList" class="divide-y divide-gray-100 font-medium"></tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add Product Form inside Dashboard -->
-    <div id="modalProductForm" class="fixed inset-0 bg-black/70 z-[110] hidden flex items-center justify-center px-4 overflow-y-auto py-10">
-        <div class="bg-white rounded-3xl p-6 md:p-8 w-full max-w-2xl shadow-2xl relative my-auto border border-gray-200">
-            <button type="button" onclick="closeModal('modalProductForm')" class="absolute top-5 start-5 text-gray-400 hover:text-gray-900 bg-gray-100 rounded-full p-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-            <h3 class="text-2xl font-black text-brand-900 mb-6">إضافة هاتف</h3>
-            <form id="productForm" onsubmit="saveProduct(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="hidden" id="prodId">
-                <div><input type="text" id="prodBrand" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" placeholder="الماركة (Apple, Samsung)"></div>
-                <div><input type="text" id="prodModel" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" placeholder="الموديل (iPhone 14)"></div>
-                <div><input type="text" id="prodStorage" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" dir="ltr" placeholder="التخزين: 256GB"></div>
-                <div><input type="text" id="prodRam" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" dir="ltr" placeholder="الرام: 8GB"></div>
-                <div><input type="text" id="prodColor" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" placeholder="اللون"></div>
-                <div><input type="text" id="prodBattery" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" dir="ltr" placeholder="البطارية: 100%"></div>
                 <div>
-                    <select id="prodCondition" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4">
-                        <option value="جديد">جديد</option><option value="مستعمل">مستعمل</option>
+                    <label class="block text-xs text-slate-400 mb-1">البريد الإلكتروني</label>
+                    <input type="email" id="adminEmail" value="anwar0707181@gmail.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">كلمة المرور</label>
+                    <input type="password" id="adminPass" placeholder="••••••••" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm">
+                </div>
+                <div class="flex justify-between items-center text-xs">
+                    <button onclick="forgotPassword()" class="text-amber-400 hover:underline">نسيت كلمة المرور؟</button>
+                </div>
+                <button onclick="loginAdmin()" class="w-full gold-bg text-slate-950 font-black py-3 rounded-xl shadow-lg hover:opacity-95 transition">دخول لوحة التحكم</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminPanelModal" class="fixed inset-0 bg-slate-950 z-50 hidden overflow-y-auto p-4 md:p-8">
+        <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6 relative">
+            <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
+                <h2 class="text-2xl font-black gold-gradient"><i class="fa-solid fa-sliders mr-2"></i> لوحة التحكم - ELECTRO AYMAN</h2>
+                <button onclick="closeAdminPanel()" class="bg-red-500/10 text-red-500 px-4 py-2 rounded-xl text-sm font-bold hover:bg-red-500/20">خروج</button>
+            </div>
+
+            <!-- Add Product Form -->
+            <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 mb-8">
+                <h3 class="text-lg font-bold mb-4 text-amber-400">إضافة هاتف جديد</h3>
+                <form id="addProductForm" onsubmit="addNewProduct(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" id="pBrand" placeholder="الماركة (Apple, Samsung...)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
+                    <input type="text" id="pModel" placeholder="الموديل (iPhone 14 Pro...)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
+                    <input type="text" id="pStorage" placeholder="التخزين (128GB, 256GB...)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
+                    <input type="text" id="pRam" placeholder="الرام (8GB, 12GB...)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
+                    <input type="text" id="pColor" placeholder="الألوان (أسود، أبيض، ذهبي...)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
+                    <select id="pCondition" class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
+                        <option value="جديد">جديد (New)</option>
+                        <option value="مستعمل">مستعمل (Used)</option>
                     </select>
-                </div>
-                <div><input type="text" id="prodWarranty" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" placeholder="الضمان: 6 Months"></div>
-                <div><input type="number" id="prodPrice" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" dir="ltr" placeholder="الثمن (درهم)"></div>
-                <div><input type="url" id="prodImage" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" dir="ltr" placeholder="رابط الصورة https://..."></div>
-                <div class="col-span-1 md:col-span-2 flex items-center gap-3">
-                    <input type="checkbox" id="prodInStock" checked class="w-5 h-5 rounded text-brand-900">
-                    <label class="font-bold">متوفر في المخزون</label>
-                </div>
-                <button type="submit" class="col-span-1 md:col-span-2 bg-brand-900 text-white rounded-xl py-3.5 font-bold mt-4">حفظ</button>
-            </form>
+                    <input type="text" id="pBattery" placeholder="حالة البطارية (90% أو جديد)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
+                    <input type="number" id="pPrice" placeholder="الثمن (بالدرهم)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
+                    
+                    <!-- Multi Images Links -->
+                    <input type="url" id="img1" placeholder="رابط الصورة 1 (أساسية)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm md:col-span-2">
+                    <input type="url" id="img2" placeholder="رابط الصورة 2" class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
+                    <input type="url" id="img3" placeholder="رابط الصورة 3" class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
+
+                    <button type="submit" class="md:col-span-2 gold-bg text-slate-950 font-bold py-3 rounded-xl shadow-lg hover:opacity-90">حفظ ونشر الهاتف</button>
+                </form>
+            </div>
+
+            <!-- Existing Products List -->
+            <h3 class="text-lg font-bold mb-4 text-slate-200">المنتجات الحالية</h3>
+            <div id="adminProductsList" class="space-y-3">
+                <!-- Injected via JS -->
+            </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-brand-900 text-white pt-16 pb-8 mt-12 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                <div>
-                    <!-- Footer Logo Code -->
-                    <div class="flex items-center gap-2 mb-6" dir="ltr">
-                        <div class="relative flex items-center justify-center w-12 h-12 bg-white rounded-xl shadow-lg">
-                            <svg class="w-7 h-7 text-yellow-600" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                        </div>
-                        <div class="flex flex-col justify-center items-start">
-                            <span class="font-black text-2xl tracking-wider text-white leading-none">
-                                ELECTRO<span class="text-yellow-500">AYMAN</span>
-                            </span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6 font-medium">
-                        الوجهة الأولى الموثوقة لبيع وشراء الهواتف الذكية في مدينة تطوان وباقي مدن المغرب.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-5 text-white">معلومات التواصل</h4>
-                    <ul class="space-y-4 text-gray-400 text-sm font-medium">
-                        <li class="flex items-start gap-3"><span class="mt-0.5 text-lg">📍</span> تطوان سوق باب النوادر<br>المحل رقم 751</li>
-                        <li class="flex items-center gap-3"><span class="text-lg">📞</span> <span dir="ltr" class="font-bold tracking-wider text-gray-300">+212 657-942294</span></li>
-                    </ul>
-                </div>
+    <footer class="bg-slate-900 border-t border-slate-800 mt-12 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-xl font-black gold-gradient mb-2">ELECTRO AYMAN</h2>
+            <p class="text-xs text-slate-400 mb-4"><i class="fa-solid fa-location-dot text-amber-500 mr-1"></i> تطوان سوق باب النوادر المحل رقم 751</p>
+            <div class="flex justify-center space-x-4 space-x-reverse mb-6">
+                <a href="https://wa.me/212752588133" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-green-400 hover:bg-slate-700"><i class="fa-brands fa-whatsapp text-lg"></i>+212 752-588133</a>
+                <a href="https://www.instagram.com/anouar_prv07" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-pink-400 hover:bg-slate-700"><i class="fa-brands fa-instagram text-lg"></i>anouar_prv07</a>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs font-bold">
-                <p>&copy; 2026 Electro Ayman. جميع الحقوق محفوظة.</p>
-            </div>
+            <p class="text-xs text-slate-600">© 2026 ELECTRO AYMAN. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
+    <!-- JavaScript Logic -->
     <script>
-        const translations = {
-            ar: {
-                top_hours: "أوقات العمل: من 10 صباحاً حتى 9 ليلاً", nav_subtitle: "بيع وشراء الهواتف الجديدة والمستعملة",
-                hero_title: "أفضل الأجهزة بأحسن الأثمنة<br>في <span class='text-yellow-500'>Electro Ayman</span>",
-                hero_desc: "متخصصون في بيع وشراء الهواتف الذكية الجديدة والمستعملة مع ضمان الجودة والتوصيل لجميع المدن المغربية.",
-                search_ph: "بحث بالاسم أو الموديل...", all_brands: "جميع الماركات", all_conditions: "الحالة (الكل)",
-                cond_new: "جديد", cond_used: "مستعمل", phones_list: "قائمة الهواتف", lang_display: "العربية"
+        // Default Products
+        let products = JSON.parse(localStorage.getItem('electro_products')) || [
+            {
+                id: 1,
+                brand: "Apple",
+                model: "iPhone 15 Pro Max",
+                storage: "256GB",
+                ram: "8GB",
+                color: "تيتانيوم طبيعي",
+                condition: "مستعمل",
+                battery: "92%",
+                price: "9800",
+                images: [
+                    "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=500",
+                    "https://images.unsplash.com/photo-1695048065057-01389886e4ea?w=500"
+                ]
             },
-            fr: {
-                top_hours: "Horaires: de 10h à 21h", nav_subtitle: "Achat & Vente de Téléphones",
-                hero_title: "Les Meilleurs Appareils<br>chez <span class='text-yellow-500'>Electro Ayman</span>",
-                hero_desc: "Spécialisés dans l'achat et la vente de smartphones avec garantie et livraison partout au Maroc.",
-                search_ph: "Rechercher...", all_brands: "Toutes les marques", all_conditions: "État (Tous)",
-                cond_new: "Neuf", cond_used: "Occasion", phones_list: "Téléphones Disponibles", lang_display: "Français"
-            },
-            en: {
-                top_hours: "Hours: 10 AM to 9 PM", nav_subtitle: "Buy & Sell Phones",
-                hero_title: "Best Devices<br>at <span class='text-yellow-500'>Electro Ayman</span>",
-                hero_desc: "Specialized in buying and selling smartphones with warranty and delivery anywhere in Morocco.",
-                search_ph: "Search...", all_brands: "All Brands", all_conditions: "Condition (All)",
-                cond_new: "New", cond_used: "Used", phones_list: "Available Phones", lang_display: "English"
+            {
+                id: 2,
+                brand: "Samsung",
+                model: "Galaxy S24 Ultra",
+                storage: "512GB",
+                ram: "12GB",
+                color: "رمادي تيتانيوم",
+                condition: "جديد",
+                battery: "100%",
+                price: "11500",
+                images: [
+                    "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500"
+                ]
             }
-        };
-
-        const defaultProducts = [
-            { id: "p1", brand: "Apple", model: "iPhone 15 Pro Max", storage: "256GB", ram: "8GB", color: "Titanium", condition: "مستعمل", battery: "95%", price: 9500, warranty: "3 Months", inStock: true, image: "https://placehold.co/400x500/f3f4f6/000000?text=iPhone+15+Pro+Max" },
-            { id: "p2", brand: "Samsung", model: "Galaxy S24 Ultra", storage: "512GB", ram: "12GB", color: "Black", condition: "جديد", battery: "100%", price: 11500, warranty: "1 Year", inStock: true, image: "https://placehold.co/400x500/f3f4f6/000000?text=Galaxy+S24+Ultra" }
         ];
 
-        let allProducts = JSON.parse(localStorage.getItem('electro_phones_db')) || [...defaultProducts];
-        let currentLang = localStorage.getItem('electro_lang') || 'ar';
-        let currentSelectedProduct = null;
-
-        // UI Functions
-        function toggleLangMenu() { document.getElementById('langMenuDropdown').classList.toggle('hidden'); }
-        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-        function formatPrice(price) { return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " DH"; }
-
-        function setLang(lang) {
-            currentLang = lang; localStorage.setItem('electro_lang', lang);
-            const root = document.getElementById('html-root');
-            root.lang = lang; root.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            document.documentElement.style.setProperty('--main-font', lang === 'ar' ? 'Tajawal' : 'Inter');
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) el.placeholder = translations[lang][key];
-                    else if (el.tagName === 'OPTION') el.innerText = translations[lang][key];
-                    else el.innerHTML = translations[lang][key];
-                }
-            });
-            document.getElementById('current-lang-display').innerText = translations[lang].lang_display;
-            document.getElementById('langMenuDropdown').classList.add('hidden');
-            renderProducts();
+        function saveProducts() {
+            localStorage.setItem('electro_products', JSON.stringify(products));
         }
 
-        // Display Products
-        function renderProducts() {
-            const search = document.getElementById('searchInput').value.toLowerCase();
-            const brand = document.getElementById('filterBrand').value;
-            const condition = document.getElementById('filterCondition').value;
+        let currentSelectedProduct = null;
+        let selectedColor = '';
+        let selectedStorage = '';
 
-            let filtered = allProducts.filter(p => 
-                (p.model.toLowerCase().includes(search) || p.brand.toLowerCase().includes(search)) &&
-                (brand ? p.brand === brand : true) && (condition ? p.condition === condition : true)
-            );
-
-            document.getElementById('resultsCount').innerText = filtered.length;
-            const grid = document.getElementById('products-grid'); grid.innerHTML = '';
-
-            filtered.forEach(p => {
-                const stockOverlay = !p.inStock ? `<div class="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-10 flex items-center justify-center"><span class="bg-red-600 text-white font-black px-4 py-2 rounded-xl border-2 border-white transform -rotate-12 uppercase">نفذ من المخزون</span></div>` : '';
+        // Render Products
+        function renderProducts(list = products) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            if(list.length === 0) {
+                grid.innerHTML = `<p class="text-slate-500 col-span-full text-center py-10">لا توجد هواتف متوفرة حالياً.</p>`;
+                return;
+            }
+            list.forEach(p => {
                 grid.innerHTML += `
-                    <div class="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col cursor-pointer group" onclick="${p.inStock ? `showDetails('${p.id}')` : ''}">
-                        ${stockOverlay}
-                        <div class="absolute top-4 end-4 z-0"><span class="bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">${p.condition}</span></div>
-                        <div class="absolute top-4 start-4 z-0"><span class="bg-white text-gray-800 text-xs font-bold px-2 py-1.5 rounded-lg border border-gray-200">🔋 ${p.battery}</span></div>
-                        <div class="h-56 bg-gray-50 flex items-center justify-center p-6"><img src="${p.image}" class="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"></div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <p class="text-[11px] text-gray-400 font-bold uppercase tracking-widest mb-1">${p.brand}</p>
-                            <h3 class="font-black text-gray-900 text-xl leading-tight mb-4" dir="ltr">${p.model}</h3>
-                            <div class="flex justify-between text-xs font-bold text-gray-600 bg-gray-50 p-3 rounded-xl mb-4 border border-gray-100">
-                                <span>💾 <span dir="ltr">${p.storage}</span></span>
-                                <span>⚡ <span dir="ltr">${p.ram}</span></span>
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-amber-500/50 transition cursor-pointer flex flex-col justify-between" onclick="openProductModal(${p.id})">
+                        <div class="relative h-56 bg-slate-950">
+                            <img src="${p.images[0]}" alt="${p.model}" class="w-full h-full object-cover">
+                            <span class="absolute top-3 right-3 bg-amber-500 text-slate-950 font-bold text-xs px-3 py-1 rounded-full">${p.condition}</span>
+                        </div>
+                        <div class="p-4 flex-grow flex flex-col justify-between">
+                            <div>
+                                <span class="text-xs text-amber-500 font-bold uppercase">${p.brand}</span>
+                                <h3 class="font-bold text-base text-slate-100 mt-1">${p.model}</h3>
+                                <p class="text-xs text-slate-400 mt-1"><i class="fa-solid fa-hard-drive mr-1"></i> ${p.storage} | <i class="fa-solid fa-microchip mr-1"></i> ${p.ram}</p>
                             </div>
-                            <div class="mt-auto border-t border-gray-100 pt-4 flex justify-between items-center">
-                                <span class="text-brand-900 font-black text-2xl" dir="ltr">${formatPrice(p.price)}</span>
-                                <button class="bg-brand-900 text-white p-3 rounded-xl"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></button>
+                            <div class="mt-4 pt-3 border-t border-slate-800 flex justify-between items-center">
+                                <span class="text-lg font-black text-amber-400">${p.price} DH</span>
+                                <button class="bg-slate-800 hover:bg-slate-700 text-xs px-3 py-1.5 rounded-xl text-slate-200">طلب الهاتف</button>
                             </div>
                         </div>
-                    </div>`;
+                    </div>
+                `;
             });
         }
 
-        // Product Details & Checkout
-        function showDetails(id) {
-            const p = allProducts.find(x => x.id === id); if(!p) return;
+        // Filter Functionality
+        function filterCategory(brand) {
+            if(brand === 'all') {
+                renderProducts(products);
+            } else {
+                renderProducts(products.filter(p => p.brand.toLowerCase() === brand.toLowerCase()));
+            }
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            renderProducts(products.filter(p => p.model.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query)));
+        }
+
+        // Product Details Modal
+        function openProductModal(id) {
+            const p = products.find(item => item.id === id);
             currentSelectedProduct = p;
-            document.getElementById('detailImage').src = p.image;
-            document.getElementById('detailBrand').innerText = p.brand;
-            document.getElementById('detailTitle').innerText = p.model;
-            document.getElementById('detailStorage').innerText = p.storage;
-            document.getElementById('detailRam').innerText = p.ram;
-            document.getElementById('detailColor').innerText = p.color;
-            document.getElementById('detailBattery').innerText = p.battery;
-            document.getElementById('detailCondition').innerText = p.condition;
-            document.getElementById('detailWarranty').innerText = p.warranty;
-            document.getElementById('detailPrice').innerText = formatPrice(p.price);
-            
-            document.getElementById('btnOpenCheckout').onclick = () => { closeModal('modalProductDetails'); openModal('modalCheckout'); };
-            openModal('modalProductDetails');
+            selectedColor = p.color.split(',')[0].trim();
+            selectedStorage = p.storage;
+
+            let imagesHtml = '';
+            p.images.forEach((img, idx) => {
+                imagesHtml += `<img src="${img}" onclick="changeMainImage('${img}')" class="w-16 h-16 object-cover rounded-xl border border-slate-700 cursor-pointer hover:border-amber-500">`;
+            });
+
+            document.getElementById('modalContent').innerHTML = `
+                <div class="space-y-4">
+                    <div class="h-64 bg-slate-950 rounded-2xl overflow-hidden border border-slate-800">
+                        <img id="mainModalImg" src="${p.images[0]}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex gap-2 overflow-x-auto pb-2">${imagesHtml}</div>
+                    
+                    <div>
+                        <span class="text-xs text-amber-500 font-bold">${p.brand}</span>
+                        <h2 class="text-xl font-black">${p.model}</h2>
+                        <p class="text-xl font-black text-amber-400 mt-2">${p.price} DH</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-xs text-slate-300 bg-slate-950 p-3 rounded-xl">
+                        <div><b>التخزين:</b> ${p.storage}</div>
+                        <div><b>الرام:</b> ${p.ram}</div>
+                        <div><b>البطارية:</b> ${p.battery}</div>
+                        <div><b>الحالة:</b> ${p.condition}</div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1">اختر اللون:</label>
+                        <input type="text" id="custColor" value="${selectedColor}" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm">
+                    </div>
+
+                    <div class="border-t border-slate-800 pt-4 space-y-3">
+                        <h4 class="font-bold text-sm text-amber-400"><i class="fa-solid fa-truck-fast mr-1"></i> معلومات التوصيل</h4>
+                        <input type="text" id="custName" placeholder="الاسم الكامل" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm">
+                        <input type="tel" id="custPhone" placeholder="رقم الهاتف" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm">
+                        <input type="text" id="custAddress" placeholder="المدينة والعنوان الكامل" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-sm">
+                        <button onclick="submitOrder()" class="w-full gold-bg text-slate-950 font-black py-3 rounded-xl shadow-lg hover:opacity-95 transition">
+                            <i class="fa-brands fa-whatsapp mr-1"></i> تأكيد الطلب عبر واتساب
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('productModal').classList.remove('hidden');
         }
 
-        function submitOrder(e) {
-            e.preventDefault();
-            const p = currentSelectedProduct;
-            const name = document.getElementById('clientName').value;
-            const phone = document.getElementById('clientPhone').value;
-            const address = document.getElementById('clientAddress').value;
-            
-            const msg = `*🛒 طلب جديد من الموقع (Electro Ayman)*\n\n` +
-                        `📱 *الهاتف:* ${p.brand} ${p.model}\n` +
-                        `💾 *التخزين:* ${p.storage} | ⚡ *الرام:* ${p.ram}\n` +
-                        `🎨 *اللون:* ${p.color} | 🔋 *البطارية:* ${p.battery}\n` +
-                        `💵 *الثمن:* ${formatPrice(p.price)}\n\n` +
-                        `*👤 معلومات الزبون:*\n` +
-                        `الاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${address}`;
-            
-            closeModal('modalCheckout'); document.getElementById('checkoutForm').reset();
-            window.open(`https://wa.me/212657942294?text=${encodeURIComponent(msg)}`, '_blank');
+        function changeMainImage(url) {
+            document.getElementById('mainModalImg').src = url;
         }
 
-        // Admin System
-        function showLoginAlert(msg, type='red') {
-            const el = document.getElementById('loginAlert');
-            el.innerText = msg; el.className = `mt-4 text-center text-sm font-bold px-3 py-2 rounded-lg bg-${type}-100 text-${type}-700 block`;
-            setTimeout(() => el.classList.add('hidden'), 4000);
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
         }
 
-        function handleLogin() {
-            const em = document.getElementById('adminEmail').value, pw = document.getElementById('adminPassword').value;
-            if(em === "anwar0707181@gmail.com" && pw === "Anwar0707") {
-                document.getElementById('adminEmail').value = ''; document.getElementById('adminPassword').value = '';
-                closeModal('modalLogin'); openModal('modalAdminDashboard'); renderAdmin();
-            } else showLoginAlert("البريد الإلكتروني أو كلمة السر غير صحيحة");
+        // WhatsApp Order Submission
+        function submitOrder() {
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const address = document.getElementById('custAddress').value;
+            const color = document.getElementById('custColor').value;
+
+            if(!name || !phone || !address) {
+                alert('المرجو إدخال جميع معلومات التوصيل!');
+                return;
+            }
+
+            const message = `🛍️ *طلب جديد من متجر ELECTRO AYMAN* %0a%0a` +
+                            `📱 *الهاتف:* ${currentSelectedProduct.model}%0a` +
+                            `💾 *التخزين:* ${currentSelectedProduct.storage}%0a` +
+                            `🎨 *اللون:* ${color}%0a` +
+                            `💰 *الثمن:* ${currentSelectedProduct.price} DH%0a%0a` +
+                            `👤 *معلومات الزبون:*%0a` +
+                            `• الاسم: ${name}%0a` +
+                            `• الهاتف: ${phone}%0a` +
+                            `• العنوان: ${address}`;
+
+            window.open(`https://wa.me/212752588133?text=${message}`, '_blank');
         }
+
+        // Admin Management
+        function openAdminLogin() { document.getElementById('adminLoginModal').classList.remove('hidden'); }
+        function closeAdminLogin() { document.getElementById('adminLoginModal').classList.add('hidden'); }
+
+        function loginAdmin() {
+            const email = document.getElementById('adminEmail').value;
+            const pass = document.getElementById('adminPass').value;
+            if(email === 'anwar0707181@gmail.com' && pass === 'Anwar0707') {
+                closeAdminLogin();
+                document.getElementById('adminPanelModal').classList.remove('hidden');
+                loadAdminProducts();
+            } else {
+                alert('البريد أو كلمة المرور غير صحيحة!');
+            }
+        }
+
+        function closeAdminPanel() { document.getElementById('adminPanelModal').classList.add('hidden'); }
 
         function forgotPassword() {
-            const em = document.getElementById('adminEmail').value;
-            if(!em) showLoginAlert("المرجو إدخال البريد الإلكتروني أولاً");
-            else showLoginAlert("تم إرسال رابط استعادة كلمة السر إلى بريدك بنجاح", "green");
-        }
-        
-        function handleLogout() { closeModal('modalAdminDashboard'); }
-
-        function renderAdmin() {
-            const tbody = document.getElementById('adminProductsList'); tbody.innerHTML = '';
-            allProducts.forEach(p => {
-                const stock = p.inStock ? '<span class="text-green-600 font-bold bg-green-50 px-2 py-1 rounded">متوفر</span>' : '<span class="text-red-600 font-bold bg-red-50 px-2 py-1 rounded">نفذ</span>';
-                tbody.innerHTML += `
-                    <tr class="border-b border-gray-100 hover:bg-gray-50">
-                        <td class="p-3 w-16"><img src="${p.image}" class="w-12 h-12 object-contain rounded border p-1 bg-white"></td>
-                        <td class="p-3" dir="ltr"><b>${p.brand}</b> ${p.model}<br><span class="text-xs text-gray-500">${p.storage} / ${p.condition}</span></td>
-                        <td class="p-3 font-bold text-brand-900">${p.price} DH</td>
-                        <td class="p-3">${stock}</td>
-                        <td class="p-3 text-center space-x-2 space-x-reverse">
-                            <button onclick="toggleStock('${p.id}')" class="bg-gray-200 text-gray-800 px-3 py-1.5 rounded text-xs font-bold">مخزون</button>
-                            <button onclick="deleteProduct('${p.id}')" class="bg-red-100 text-red-600 px-3 py-1.5 rounded text-xs font-bold">حذف</button>
-                        </td>
-                    </tr>`;
-            });
+            alert('تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني: anwar0707181@gmail.com');
         }
 
-        function openProductForm() { document.getElementById('productForm').reset(); document.getElementById('prodId').value = "p_" + Date.now(); openModal('modalProductForm'); }
-
-        function saveProduct(e) {
+        function addNewProduct(e) {
             e.preventDefault();
             const newP = {
-                id: document.getElementById('prodId').value, brand: document.getElementById('prodBrand').value,
-                model: document.getElementById('prodModel').value, storage: document.getElementById('prodStorage').value,
-                ram: document.getElementById('prodRam').value, color: document.getElementById('prodColor').value,
-                battery: document.getElementById('prodBattery').value, condition: document.getElementById('prodCondition').value,
-                warranty: document.getElementById('prodWarranty').value, price: Number(document.getElementById('prodPrice').value),
-                image: document.getElementById('prodImage').value, inStock: document.getElementById('prodInStock').checked
+                id: Date.now(),
+                brand: document.getElementById('pBrand').value,
+                model: document.getElementById('pModel').value,
+                storage: document.getElementById('pStorage').value,
+                ram: document.getElementById('pRam').value,
+                color: document.getElementById('pColor').value,
+                condition: document.getElementById('pCondition').value,
+                battery: document.getElementById('pBattery').value,
+                price: document.getElementById('pPrice').value,
+                images: [
+                    document.getElementById('img1').value,
+                    document.getElementById('img2').value || document.getElementById('img1').value,
+                    document.getElementById('img3').value || document.getElementById('img1').value
+                ].filter(Boolean)
             };
-            allProducts.unshift(newP); localStorage.setItem('electro_phones_db', JSON.stringify(allProducts));
-            renderAdmin(); renderProducts(); closeModal('modalProductForm');
+
+            products.unshift(newP);
+            saveProducts();
+            renderProducts();
+            loadAdminProducts();
+            document.getElementById('addProductForm').reset();
+            alert('تمت إضافة الهاتف بنجاح!');
+        }
+
+        function loadAdminProducts() {
+            const list = document.getElementById('adminProductsList');
+            list.innerHTML = '';
+            products.forEach(p => {
+                list.innerHTML += `
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex justify-between items-center">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <img src="${p.images[0]}" class="w-12 h-12 object-cover rounded-lg">
+                            <div>
+                                <h4 class="font-bold text-sm">${p.model}</h4>
+                                <span class="text-xs text-amber-400">${p.price} DH</span>
+                            </div>
+                        </div>
+                        <button onclick="deleteProduct(${p.id})" class="bg-red-500/10 text-red-500 hover:bg-red-500/20 px-3 py-1.5 rounded-lg text-xs font-bold">حذف</button>
+                    </div>
+                `;
+            });
         }
 
         function deleteProduct(id) {
-            allProducts = allProducts.filter(p => p.id !== id); localStorage.setItem('electro_phones_db', JSON.stringify(allProducts));
-            renderAdmin(); renderProducts();
+            if(confirm('هل أنت متأكد من حذف هذا الهاتف؟')) {
+                products = products.filter(p => p.id !== id);
+                saveProducts();
+                renderProducts();
+                loadAdminProducts();
+            }
         }
 
-        function toggleStock(id) {
-            let p = allProducts.find(x => x.id === id);
-            if(p) { p.inStock = !p.inStock; localStorage.setItem('electro_phones_db', JSON.stringify(allProducts)); renderAdmin(); renderProducts(); }
+        // Language Translator Dictionary
+        const translations = {
+            ar: { sub_title: "بيع وشراء الهواتف الجديدة والمستعملة", hero_title: "أفضل العروض على الهواتف الذكية", hero_desc: "جودة عالية، ضمان حقيقي، وتوصيل لجميع مدن المغرب مع الدفع عند الاستلام." },
+            fr: { sub_title: "Achat et Vente de Téléphones Neufs et Occasion", hero_title: "Meilleures Offres sur les Smartphones", hero_desc: "Haute qualité, garantie réelle et livraison dans toutes les villes du Maroc." },
+            en: { sub_title: "Buy & Sell New and Used Phones", hero_title: "Best Offers on Smartphones", hero_desc: "High quality, real warranty, and delivery across all cities of Morocco." }
+        };
+
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if(translations[lang][key]) el.innerText = translations[lang][key];
+            });
         }
 
-        document.getElementById('searchInput').addEventListener('input', renderProducts);
-        document.getElementById('filterBrand').addEventListener('change', renderProducts);
-        document.getElementById('filterCondition').addEventListener('change', renderProducts);
-
-        window.onload = () => { setLang(currentLang); };
+        // Initial Load
+        renderProducts();
     </script>
 </body>
 </html>
