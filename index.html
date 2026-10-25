@@ -104,8 +104,9 @@ body { font-family: 'Tajawal', sans-serif; background-color: #0f172a; color: #f8
 </div>
 ​<!-- Add Product Form -->
 <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 mb-8">
-<h3 class="text-lg font-bold mb-4 text-amber-400">إضافة هاتف جديد</h3>
-<form id="addProductForm" onsubmit="addNewProduct(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<h3 class="text-lg font-bold mb-4 text-amber-400" id="formTitle">إضافة هاتف جديد</h3>
+<form id="addProductForm" onsubmit="saveProduct(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<input type="hidden" id="pId">
 <input type="text" id="pBrand" placeholder="الماركة (Apple, Samsung...)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
 <input type="text" id="pModel" placeholder="الموديل (iPhone 14 Pro...)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
 <input type="text" id="pStorage" placeholder="التخزين (128GB, 256GB...)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
@@ -121,7 +122,7 @@ body { font-family: 'Tajawal', sans-serif; background-color: #0f172a; color: #f8
 <input type="url" id="img1" placeholder="رابط الصورة 1 (أساسية)" required class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm md:col-span-2">
 <input type="url" id="img2" placeholder="رابط الصورة 2" class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
 <input type="url" id="img3" placeholder="رابط الصورة 3" class="bg-slate-900 border border-slate-800 p-3 rounded-xl text-sm">
-​<button type="submit" class="md:col-span-2 gold-bg text-slate-950 font-bold py-3 rounded-xl shadow-lg hover:opacity-90">حفظ ونشر الهاتف</button>
+​<button type="submit" id="saveBtnText" class="md:col-span-2 gold-bg text-slate-950 font-bold py-3 rounded-xl shadow-lg hover:opacity-90">حفظ ونشر الهاتف</button>
 </form>
 </div>
 ​<!-- Existing Products List -->
@@ -180,6 +181,34 @@ battery: "100%",
 price: "11500",
 images: [
 "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500"
+]
+},
+{
+id: 3,
+brand: "Apple",
+model: "iPhone 14 Pro",
+storage: "128GB",
+ram: "6GB",
+color: "أسود فضاء",
+condition: "مستعمل",
+battery: "88%",
+price: "7200",
+images: [
+"https://images.unsplash.com/photo-1663499482523-1c0c1ae4ce49?w=500"
+]
+},
+{
+id: 4,
+brand: "Xiaomi",
+model: "Xiaomi 14 Pro",
+storage: "512GB",
+ram: "12GB",
+color: "أخضر",
+condition: "جديد",
+battery: "100%",
+price: "6800",
+images: [
+"https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500"
 ]
 }
 ];
@@ -294,10 +323,11 @@ alert('البريد أو كلمة المرور غير صحيحة!');
 ​function forgotPassword() {
 alert('تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني: anwar0707181@gmail.com');
 }
-​function addNewProduct(e) {
+​function saveProduct(e) {
 e.preventDefault();
-const newP = {
-id: Date.now(),
+const idInput = document.getElementById('pId').value;
+​const productData = {
+id: idInput ? Number(idInput) : Date.now(),
 brand: document.getElementById('pBrand').value,
 model: document.getElementById('pModel').value,
 storage: document.getElementById('pStorage').value,
@@ -312,18 +342,47 @@ document.getElementById('img2').value || document.getElementById('img1').value,
 document.getElementById('img3').value || document.getElementById('img1').value
 ].filter(Boolean)
 };
-​products.unshift(newP);
-saveProducts();
+​if(idInput) {
+// Edit existing
+products = products.map(p => p.id === Number(idInput) ? productData : p);
+alert('تم تعديل الهاتف بنجاح!');
+} else {
+// Add new
+products.unshift(productData);
+alert('تمت إضافة الهاتف بنجاح!');
+}
+​saveProducts();
 renderProducts();
 loadAdminProducts();
 document.getElementById('addProductForm').reset();
-alert('تمت إضافة الهاتف بنجاح!');
+document.getElementById('pId').value = '';
+document.getElementById('formTitle').innerText = 'إضافة هاتف جديد';
+document.getElementById('saveBtnText').innerText = 'حفظ ونشر الهاتف';
+}
+​function editProduct(id) {
+const p = products.find(item => item.id === id);
+if(!p) return;
+​document.getElementById('pId').value = p.id;
+document.getElementById('pBrand').value = p.brand;
+document.getElementById('pModel').value = p.model;
+document.getElementById('pStorage').value = p.storage;
+document.getElementById('pRam').value = p.ram;
+document.getElementById('pColor').value = p.color;
+document.getElementById('pCondition').value = p.condition;
+document.getElementById('pBattery').value = p.battery;
+document.getElementById('pPrice').value = p.price;
+document.getElementById('img1').value = p.images[0] || '';
+document.getElementById('img2').value = p.images[1] || '';
+document.getElementById('img3').value = p.images[2] || '';
+​document.getElementById('formTitle').innerText = 'تعديل معلومات الهاتف';
+document.getElementById('saveBtnText').innerText = 'تحديث الهاتف';
+window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 ​function loadAdminProducts() {
 const list = document.getElementById('adminProductsList');
 list.innerHTML = '';
 products.forEach(p => {
-list.innerHTML += <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex justify-between items-center"> <div class="flex items-center space-x-3 space-x-reverse"> <img src="${p.images[0]}" class="w-12 h-12 object-cover rounded-lg"> <div> <h4 class="font-bold text-sm">${p.model}</h4> <span class="text-xs text-amber-400">${p.price} DH</span> </div> </div> <button onclick="deleteProduct(${p.id})" class="bg-red-500/10 text-red-500 hover:bg-red-500/20 px-3 py-1.5 rounded-lg text-xs font-bold">حذف</button> </div>;
+list.innerHTML += <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex justify-between items-center"> <div class="flex items-center space-x-3 space-x-reverse"> <img src="${p.images[0]}" class="w-12 h-12 object-cover rounded-lg"> <div> <h4 class="font-bold text-sm">${p.model}</h4> <span class="text-xs text-amber-400">${p.price} DH</span> </div> </div> <div class="flex gap-2"> <button onclick="editProduct(${p.id})" class="bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 px-3 py-1.5 rounded-lg text-xs font-bold">تعديل</button> <button onclick="deleteProduct(${p.id})" class="bg-red-500/10 text-red-500 hover:bg-red-500/20 px-3 py-1.5 rounded-lg text-xs font-bold">حذف</button> </div> </div>;
 });
 }
 ​function deleteProduct(id) {
