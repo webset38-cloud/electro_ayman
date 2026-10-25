@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" id="html-root">
 <head>
@@ -22,7 +22,7 @@
                             200: '#e5e7eb',
                             500: '#6b7280',
                             800: '#1f2937',
-                            900: '#000000', // Black Theme
+                            900: '#000000',
                         },
                         whatsapp: '#25D366',
                         instagram: '#E1306C'
@@ -32,19 +32,16 @@
         }
     </script>
     <style>
-        :root {
-            --main-font: 'Tajawal';
-        }
+        :root { --main-font: 'Tajawal'; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .group:hover .group-hover\:block { display: block; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased transition-all duration-300">
+<body class="bg-gray-50 text-gray-800 antialiased">
 
     <!-- Top Info Bar -->
-    <div class="bg-brand-900 text-white text-xs py-2 px-4 transition-colors">
+    <div class="bg-brand-900 text-white text-xs py-2 px-4">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-start">
             <div class="flex items-center gap-4">
                 <span class="flex items-center gap-1 font-medium">
@@ -56,14 +53,14 @@
                     <span data-i18n="top_address">تطوان، سوق باب النوادر، المحل 751</span>
                 </span>
             </div>
-            <div class="flex items-center gap-4 font-bold tracking-wider">
-                <a href="https://www.electroayman.com" class="hover:text-gray-300 transition text-[10px] sm:text-xs">WWW.ELECTROAYMAN.COM</a>
+            <div class="flex items-center font-bold tracking-wider">
+                <a href="#" class="hover:text-gray-300 transition text-[10px] sm:text-xs">WWW.ELECTROAYMAN.COM</a>
             </div>
         </div>
     </div>
 
     <!-- Navbar -->
-    <nav class="glass-effect shadow-sm sticky top-0 z-50 border-b border-gray-200">
+    <nav class="glass-effect shadow-sm sticky top-0 z-40 border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <!-- Logo -->
@@ -78,16 +75,16 @@
                 <div class="flex items-center gap-2 sm:gap-4">
                     
                     <!-- Language Switcher -->
-                    <div class="relative group cursor-pointer z-50">
-                        <div class="flex items-center gap-1 text-gray-600 hover:text-brand-900 font-bold text-xs sm:text-sm bg-gray-100/80 px-2 sm:px-3 py-2 rounded-xl transition-all border border-gray-200">
+                    <div class="relative z-50">
+                        <div onclick="toggleLangMenu()" class="flex items-center gap-1 text-gray-600 hover:text-brand-900 font-bold text-xs sm:text-sm bg-gray-100/80 px-2 sm:px-3 py-2 rounded-xl transition-all border border-gray-200 cursor-pointer">
                             <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
                             <span id="current-lang-display" class="hidden sm:inline">العربية</span>
                             <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </div>
-                        <div class="absolute top-full end-0 mt-1 w-28 sm:w-32 bg-white rounded-xl shadow-xl border border-gray-100 hidden group-hover:block overflow-hidden">
-                            <div onclick="setLang('ar')" class="px-4 py-2.5 hover:bg-gray-50 text-sm font-bold text-end cursor-pointer transition-colors">العربية</div>
-                            <div onclick="setLang('fr')" class="px-4 py-2.5 hover:bg-gray-50 text-sm font-bold text-start cursor-pointer border-t border-gray-50 transition-colors">Français</div>
-                            <div onclick="setLang('en')" class="px-4 py-2.5 hover:bg-gray-50 text-sm font-bold text-start cursor-pointer border-t border-gray-50 transition-colors">English</div>
+                        <div id="langMenuDropdown" class="absolute top-full end-0 mt-1 w-28 sm:w-32 bg-white rounded-xl shadow-xl border border-gray-100 hidden overflow-hidden">
+                            <div onclick="setLang('ar')" class="px-4 py-2.5 hover:bg-gray-50 text-sm font-bold text-end cursor-pointer">العربية</div>
+                            <div onclick="setLang('fr')" class="px-4 py-2.5 hover:bg-gray-50 text-sm font-bold text-start cursor-pointer border-t border-gray-50">Français</div>
+                            <div onclick="setLang('en')" class="px-4 py-2.5 hover:bg-gray-50 text-sm font-bold text-start cursor-pointer border-t border-gray-50">English</div>
                         </div>
                     </div>
 
@@ -103,28 +100,87 @@
                     </a>
                     
                     <!-- Admin Login Btn -->
-                    <button onclick="window.openModal('modalLogin')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 p-2 sm:p-2.5 rounded-xl transition-all shadow-sm border border-gray-200 ml-2">
+                    <button onclick="openModal('modalLogin')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 p-2 sm:p-2.5 rounded-xl transition-all shadow-sm border border-gray-200 ml-2">
                         <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                     </button>
                 </div>
             </div>
-            <button onclick="window.closeModal('modalWarranty')" class="w-full bg-brand-900 text-white rounded-xl py-3.5 font-bold hover:bg-gray-800 transition-colors shadow-md" data-i18n="close_btn">إغلاق</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-brand-900 pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight" data-i18n="hero_title">
+                أفضل الأجهزة بأحسن الأثمنة<br>في <span class="text-gray-400">Electro Ayman</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg sm:text-xl text-gray-300 font-medium" data-i18n="hero_desc">
+                متخصصون في بيع وشراء الهواتف الذكية الجديدة والمستعملة مع ضمان الجودة والتوصيل لجميع المدن المغربية.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-16 relative z-10">
+        <!-- Search & Filters -->
+        <div class="bg-white rounded-3xl p-4 sm:p-6 shadow-xl border border-gray-100 mb-12">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-1 relative">
+                    <input type="text" id="searchInput" class="w-full bg-gray-50 border border-gray-200 rounded-2xl py-3.5 px-12 text-sm font-bold text-gray-800 outline-none focus:ring-2 focus:ring-brand-900 transition-all" data-i18n="search_ph" placeholder="بحث بالاسم أو الموديل...">
+                    <svg class="w-5 h-5 text-gray-400 absolute top-3.5 start-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2 md:pb-0">
+                    <select id="filterBrand" class="bg-gray-50 border border-gray-200 rounded-2xl py-3 px-4 text-sm font-bold text-gray-700 outline-none focus:ring-2 focus:ring-brand-900 min-w-[120px]">
+                        <option value="" data-i18n="all_brands">جميع الماركات</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Xiaomi">Xiaomi</option>
+                    </select>
+                    <select id="filterCondition" class="bg-gray-50 border border-gray-200 rounded-2xl py-3 px-4 text-sm font-bold text-gray-700 outline-none focus:ring-2 focus:ring-brand-900 min-w-[120px]">
+                        <option value="" data-i18n="all_conditions">الحالة (الكل)</option>
+                        <option value="جديد" data-i18n="cond_new">جديد</option>
+                        <option value="مستعمل" data-i18n="cond_used">مستعمل</option>
+                    </select>
+                    <select id="filterPrice" class="bg-gray-50 border border-gray-200 rounded-2xl py-3 px-4 text-sm font-bold text-gray-700 outline-none focus:ring-2 focus:ring-brand-900 min-w-[140px]">
+                        <option value="" data-i18n="sort">ترتيب بالثمن</option>
+                        <option value="asc" data-i18n="sort_asc">الأرخص أولاً</option>
+                        <option value="desc" data-i18n="sort_desc">الأغلى أولاً</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl sm:text-3xl font-black text-brand-900" data-i18n="phones_list">قائمة الهواتف المتوفرة</h2>
+            <span id="resultsCount" class="bg-gray-200 text-gray-800 text-xs font-bold px-3 py-1.5 rounded-full"></span>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- الهواتف غادي تبان هنا -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm mt-8">
+            <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <h3 class="text-xl font-black text-gray-900 mb-2" data-i18n="empty_title">مالقيناش هاد التيليفون</h3>
+            <p class="text-gray-500 font-medium" data-i18n="empty_desc">جرب تبدل الفلتر أو تقلب بسمية أخرى</p>
         </div>
     </div>
 
     <!-- Admin Notification Modal -->
     <div id="modalNotification" class="fixed inset-0 bg-black/60 z-[110] hidden flex items-center justify-center px-4 backdrop-blur-sm transition-opacity">
-        <div class="bg-white rounded-2xl p-6 w-full max-w-sm shadow-2xl text-center">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-sm shadow-2xl text-center relative">
             <h3 id="notifTitle" class="text-xl font-bold text-gray-900 mb-3">تنبيه</h3>
             <p id="notifMessage" class="text-gray-600 mb-6 font-medium">رسالة التنبيه هنا.</p>
-            <button onclick="window.closeModal('modalNotification')" class="w-full bg-brand-900 text-white rounded-xl py-2.5 font-bold hover:bg-gray-800 transition-colors">حسناً</button>
+            <button onclick="closeModal('modalNotification')" class="w-full bg-brand-900 text-white rounded-xl py-2.5 font-bold hover:bg-gray-800 transition-colors">حسناً</button>
         </div>
     </div>
 
     <!-- Admin Login Modal -->
     <div id="modalLogin" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-md transition-opacity">
         <div class="bg-white rounded-3xl p-6 md:p-8 w-full max-w-md shadow-2xl relative">
-            <button onclick="window.closeModal('modalLogin')" class="absolute top-5 start-5 text-gray-400 hover:text-gray-900 transition-colors bg-gray-100 rounded-full p-2">
+            <button onclick="closeModal('modalLogin')" class="absolute top-5 start-5 text-gray-400 hover:text-gray-900 transition-colors bg-gray-100 rounded-full p-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <h3 class="text-2xl font-black text-brand-900 mb-2">تسجيل الدخول للإدارة</h3>
@@ -133,16 +189,13 @@
             <div class="space-y-4">
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">البريد الإلكتروني</label>
-                    <input type="email" id="adminEmail" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="admin@example.com">
+                    <input type="email" id="adminEmail" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="anwar0707181@gmail.com">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">كلمة السر</label>
                     <input type="password" id="adminPassword" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="••••••••">
                 </div>
-                <div class="flex justify-end">
-                    <button onclick="window.handleForgotPassword()" class="text-sm text-brand-500 hover:text-brand-900 font-bold transition-colors">نسيت كلمة السر؟</button>
-                </div>
-                <button onclick="window.handleLogin()" class="w-full bg-brand-900 text-white rounded-xl py-3.5 font-bold hover:bg-gray-800 transition-colors shadow-md mt-2">تسجيل الدخول</button>
+                <button onclick="handleLogin()" class="w-full bg-brand-900 text-white rounded-xl py-3.5 font-bold hover:bg-gray-800 transition-colors shadow-md mt-2">تسجيل الدخول</button>
             </div>
         </div>
     </div>
@@ -153,14 +206,14 @@
             <div class="flex flex-col md:flex-row justify-between items-center gap-4 bg-white p-4 sm:p-6 rounded-3xl shadow-sm mb-6 border border-gray-200">
                 <h2 class="text-2xl font-black text-brand-900">لوحة التحكم (Admin Panel)</h2>
                 <div class="flex flex-wrap justify-center gap-3">
-                    <button onclick="window.openProductModal()" class="bg-whatsapp hover:bg-green-600 text-white px-5 py-2.5 rounded-xl font-bold shadow-md transition-all flex items-center gap-2">
+                    <button onclick="openProductModal()" class="bg-whatsapp hover:bg-green-600 text-white px-5 py-2.5 rounded-xl font-bold shadow-md transition-all flex items-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                         <span>إضافة هاتف جديد</span>
                     </button>
-                    <button onclick="window.handleLogout()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-5 py-2.5 rounded-xl font-bold transition-all">
+                    <button onclick="handleLogout()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-5 py-2.5 rounded-xl font-bold transition-all">
                         تسجيل الخروج
                     </button>
-                    <button onclick="window.closeModal('modalAdminDashboard')" class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-xl font-bold transition-all">
+                    <button onclick="closeModal('modalAdminDashboard')" class="bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 px-5 py-2.5 rounded-xl font-bold transition-all">
                         العودة للموقع
                     </button>
                 </div>
@@ -190,12 +243,12 @@
     <!-- Add/Edit Product Modal -->
     <div id="modalProductForm" class="fixed inset-0 bg-black/60 z-[110] hidden flex items-center justify-center px-4 backdrop-blur-md transition-opacity overflow-y-auto py-10">
         <div class="bg-white rounded-3xl p-6 md:p-8 w-full max-w-3xl shadow-2xl relative my-auto">
-            <button onclick="window.closeModal('modalProductForm')" class="absolute top-5 start-5 text-gray-400 hover:text-gray-900 transition-colors bg-gray-100 rounded-full p-2">
+            <button type="button" onclick="closeModal('modalProductForm')" class="absolute top-5 start-5 text-gray-400 hover:text-gray-900 transition-colors bg-gray-100 rounded-full p-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             <h3 id="productFormTitle" class="text-2xl font-black text-brand-900 mb-6 border-b border-gray-100 pb-3">إضافة هاتف جديد</h3>
             
-            <form id="productForm" onsubmit="window.handleSaveProduct(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form id="productForm" onsubmit="handleSaveProduct(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input type="hidden" id="prodId">
                 <div><label class="block text-sm font-bold text-gray-700 mb-1">الماركة (Brand)</label><input type="text" id="prodBrand" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 outline-none focus:ring-2 focus:ring-brand-900" placeholder="مثال: Apple"></div>
                 <div><label class="block text-sm font-bold text-gray-700 mb-1">الموديل (Model)</label><input type="text" id="prodModel" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 outline-none focus:ring-2 focus:ring-brand-900" placeholder="مثال: iPhone 14 Pro"></div>
@@ -212,15 +265,15 @@
                 </div>
                 <div><label class="block text-sm font-bold text-gray-700 mb-1">مدة الضمان (Warranty)</label><input type="text" id="prodWarranty" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 outline-none focus:ring-2 focus:ring-brand-900" placeholder="مثال: 6 Months أو 1 سنة"></div>
                 <div><label class="block text-sm font-bold text-gray-700 mb-1">الثمن النهائي (بالدرهم)</label><input type="number" id="prodPrice" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="مثلا: 8500"></div>
-                <div><label class="block text-sm font-bold text-gray-700 mb-1">الثمن القديم (اختياري)</label><input type="number" id="prodOldPrice" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="مثلا: 9200 (للتخفيض)"></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">الثمن القديم (اختياري)</label><input type="number" id="prodOldPrice" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="مثلا: 9200"></div>
                 <div><label class="block text-sm font-bold text-gray-700 mb-1">رابط الصورة (URL)</label><input type="url" id="prodImage" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="https://..."></div>
                 <div class="flex items-center gap-3 pt-6">
                     <input type="checkbox" id="prodInStock" checked class="w-5 h-5 rounded text-brand-900 focus:ring-brand-900">
                     <label class="text-sm font-bold text-gray-700 cursor-pointer" for="prodInStock">متوفر في المخزون (In Stock)</label>
                 </div>
                 <div class="col-span-1 md:col-span-2 mt-4 flex gap-3">
-                    <button type="submit" id="saveProductBtn" class="flex-1 bg-brand-900 text-white rounded-xl py-3.5 font-bold hover:bg-gray-800 transition-colors shadow-md">حفظ الهاتف</button>
-                    <button type="button" onclick="window.closeModal('modalProductForm')" class="flex-1 bg-gray-200 text-gray-800 rounded-xl py-3.5 font-bold hover:bg-gray-300 transition-colors">إلغاء</button>
+                    <button type="submit" class="flex-1 bg-brand-900 text-white rounded-xl py-3.5 font-bold hover:bg-gray-800 transition-colors shadow-md">حفظ الهاتف</button>
+                    <button type="button" onclick="closeModal('modalProductForm')" class="flex-1 bg-gray-200 text-gray-800 rounded-xl py-3.5 font-bold hover:bg-gray-300 transition-colors">إلغاء</button>
                 </div>
             </form>
         </div>
@@ -230,8 +283,6 @@
     <footer class="bg-brand-900 text-white pt-16 pb-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                
-                <!-- Brand Info -->
                 <div>
                     <span class="font-black text-3xl tracking-tighter text-white uppercase block mb-3">
                         Electro<span class="text-gray-500">Ayman</span>
@@ -239,17 +290,7 @@
                     <p class="text-gray-400 text-sm leading-relaxed mb-6 font-medium" data-i18n="footer_desc">
                         الوجهة الأولى الموثوقة لبيع وشراء الهواتف الذكية في مدينة تطوان وباقي مدن المغرب.
                     </p>
-                    <div class="flex items-center gap-3">
-                        <a href="https://www.instagram.com/ayman.phone_?xtok=ODB1NHM5Zmd4anBp" target="_blank" class="w-11 h-11 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-instagram transition-colors shadow-md">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                        </a>
-                        <a href="https://wa.me/212657942294" target="_blank" class="w-11 h-11 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-whatsapp transition-colors shadow-md">
-                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-                        </a>
-                    </div>
                 </div>
-
-                <!-- Contact Info -->
                 <div>
                     <h4 class="font-bold text-lg mb-5 text-white" data-i18n="contact_info">معلومات التواصل</h4>
                     <ul class="space-y-4 text-gray-400 text-sm font-medium">
@@ -260,67 +301,18 @@
                         <li class="flex items-center gap-3">
                             <span class="text-lg">📞</span> <span dir="ltr" class="font-bold tracking-wider text-gray-300">+212 657-942294</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-lg">⏰</span> <span data-i18n="work_hours">من 10 صباحا حتى 9 ليلا</span>
-                        </li>
-                        <li>
-                            <a href="https://maps.app.goo.gl/Edbe3nEquc2zuUPw9?g_st=ac" target="_blank" class="text-blue-400 hover:text-blue-300 underline font-bold" data-i18n="map_link">عرض الموقع على الخريطة</a>
-                        </li>
                     </ul>
                 </div>
-
-                <!-- Delivery & Payment -->
-                <div>
-                    <h4 class="font-bold text-lg mb-5 text-white" data-i18n="pay_del">طرق الدفع والتوصيل</h4>
-                    <ul class="space-y-4 text-gray-400 text-sm font-medium">
-                        <li class="flex items-center gap-3">
-                            <span class="text-lg">💵</span> <span data-i18n="pay_cash">الدفع نقداً (كاش)</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-lg">🏦</span> <span data-i18n="pay_bank">تحويل بنكي (Virement)</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-lg">💳</span> <span data-i18n="pay_card">الأداء بالبطاقة البنكية</span>
-                        </li>
-                        <li class="flex items-center gap-3 mt-5 text-green-400 font-bold border-t border-gray-700/50 pt-4">
-                            <span class="text-lg">🚚</span> <span data-i18n="del_all">توصيل متوفر لجميع المدن</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Links -->
-                <div>
-                    <h4 class="font-bold text-lg mb-5 text-white" data-i18n="links">روابط مهمة</h4>
-                    <ul class="space-y-3 text-gray-400 text-sm font-medium">
-                        <li><button onclick="openModal('modalAbout')" class="hover:text-white transition-colors" data-i18n="about_link">من نحن</button></li>
-                        <li><button onclick="openModal('modalWarranty')" class="hover:text-white transition-colors" data-i18n="warranty_link">سياسة الضمان والاسترجاع</button></li>
-                        <li><a href="#" onclick="window.scrollTo(0,0)" class="hover:text-white transition-colors" data-i18n="home_link">الرئيسية</a></li>
-                    </ul>
-                </div>
-
             </div>
-            
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs font-bold flex flex-col items-center justify-center gap-2">
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs font-bold">
                 <p data-i18n="copyright">&copy; 2026 Electro Ayman. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, updateDoc, deleteDoc, onSnapshot, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'electro-ayman';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
-        const productsCollection = collection(db, 'artifacts', appId, 'public', 'data', 'products');
-
-        const ADMIN_EMAIL = "anwar0707181@gmail.com";
-
-        // --- TRANSLATIONS DICTIONARY ---
+    <!-- Safe JavaScript implementation -->
+    <script>
+        // Translations
         const translations = {
             ar: {
                 top_hours: "أوقات العمل: من 10 صباحاً حتى 9 ليلاً",
@@ -329,20 +321,15 @@
                 nav_contact: "تواصل معنا",
                 hero_title: "أفضل الأجهزة بأحسن الأثمنة<br>في <span class='text-gray-400'>Electro Ayman</span>",
                 hero_desc: "متخصصون في بيع وشراء الهواتف الذكية الجديدة والمستعملة مع ضمان الجودة والتوصيل لجميع المدن المغربية.",
-                feat_delivery: "🚚 توصيل لجميع المدن",
-                feat_warranty: "🛡️ ضمان الجودة",
-                feat_cod: "💳 دفع عند الاستلام",
-                search_ph: "بحث بالاسم أو الموديل (مثال: iPhone 15)...",
+                search_ph: "بحث بالاسم أو الموديل...",
                 all_brands: "جميع الماركات",
                 all_conditions: "الحالة (الكل)",
                 cond_new: "جديد",
                 cond_used: "مستعمل",
-                storage: "سعة التخزين",
                 sort: "ترتيب بالثمن",
                 sort_asc: "الأرخص أولاً",
                 sort_desc: "الأغلى أولاً",
                 phones_list: "قائمة الهواتف المتوفرة",
-                loading: "جاري التحميل...",
                 found_phones: "لقينا {count} تيليفون",
                 not_found: "مالقينا حتى نتيجة",
                 empty_title: "مالقيناش هاد التيليفون",
@@ -351,337 +338,218 @@
                 buy_now: "أطلب الآن",
                 contact_info: "معلومات التواصل",
                 address_lbl: "تطوان سوق باب النوادر<br>المحل رقم 751",
-                map_link: "عرض الموقع على الخريطة",
-                work_hours: "من 10 صباحا حتى 9 ليلا",
-                pay_del: "طرق الدفع والتوصيل",
-                pay_cash: "الدفع نقداً (كاش)",
-                pay_bank: "تحويل بنكي (Virement)",
-                pay_card: "الأداء بالبطاقة البنكية",
-                del_all: "توصيل متوفر لجميع المدن",
-                links: "روابط مهمة",
-                about_link: "من نحن",
-                warranty_link: "سياسة الضمان والاسترجاع",
-                home_link: "الرئيسية",
                 copyright: "&copy; 2026 Electro Ayman. جميع الحقوق محفوظة.",
-                about_title: "من نحن",
-                about_text: "<strong>Electro Ayman</strong> هو متجر متخصص في بيع وشراء الهواتف الذكية (الجديدة والمستعملة). مقرنا في مدينة تطوان (سوق باب النوادر المحل رقم 751). نحن نسعى لتقديم أفضل الأجهزة بأثمنة تنافسية مع ضمان الجودة لكل هاتف نبيعه.",
-                warranty_title: "سياسة الضمان والاسترجاع",
-                warranty_text_1: "الهواتف الجديدة تأتي بضمان الشركة المصنعة.",
-                warranty_text_2: "الهواتف المستعملة تخضع لفحص دقيق ونقدم عليها ضمان المحل (حسب الاتفاق).",
-                warranty_text_3: "لا يشمل الضمان الأضرار الناتجة عن سوء الاستخدام (الكسر، الماء...).",
-                warranty_text_4: "يحق للزبون فحص الجهاز والتأكد منه عند الاستلام.",
-                close_btn: "إغلاق",
                 whatsapp_msg: "السلام عليكم Electro Ayman، بغيت نسول على التيليفون: {name} لي الثمن ديالو {price} درهم. واش باقي متوفر؟",
-                lang_display: "العربية"
-            },
-            en: {
-                top_hours: "Working Hours: 10 AM to 9 PM",
-                top_address: "Tetouan, Bab Nouader Market, Shop 751",
-                nav_subtitle: "Buy & Sell New & Used Phones",
-                nav_contact: "Contact Us",
-                hero_title: "Best Devices at the Best Prices<br>at <span class='text-gray-400'>Electro Ayman</span>",
-                hero_desc: "Specialized in buying and selling new and used smartphones with quality guarantee and delivery to all Moroccan cities.",
-                feat_delivery: "🚚 Delivery Everywhere",
-                feat_warranty: "🛡️ Quality Guarantee",
-                feat_cod: "💳 Cash on Delivery",
-                search_ph: "Search by name or model (e.g. iPhone 15)...",
-                all_brands: "All Brands",
-                all_conditions: "Condition (All)",
-                cond_new: "New",
-                cond_used: "Used",
-                storage: "Storage",
-                sort: "Sort by Price",
-                sort_asc: "Cheapest First",
-                sort_desc: "Most Expensive First",
-                phones_list: "Available Phones",
-                loading: "Loading...",
-                found_phones: "Found {count} phones",
-                not_found: "No results found",
-                empty_title: "Phone not found",
-                empty_desc: "Try changing the filters or search with a different name",
-                out_of_stock: "Out of Stock",
-                buy_now: "Order Now",
-                contact_info: "Contact Info",
-                address_lbl: "Tetouan, Bab Nouader Market<br>Shop No. 751",
-                map_link: "View on Map",
-                work_hours: "From 10 AM to 9 PM",
-                pay_del: "Payment & Delivery",
-                pay_cash: "Cash on Delivery",
-                pay_bank: "Bank Transfer",
-                pay_card: "Credit Card Payment",
-                del_all: "Delivery available to all cities",
-                links: "Important Links",
-                about_link: "About Us",
-                warranty_link: "Warranty & Return Policy",
-                home_link: "Home",
-                copyright: "&copy; 2026 Electro Ayman. All rights reserved.",
-                about_title: "About Us",
-                about_text: "<strong>Electro Ayman</strong> is a store specialized in buying and selling smart phones (new and used). We are located in Tetouan (Bab Nouader Market, Shop 751). We strive to provide the best devices at competitive prices with a quality guarantee for every phone we sell.",
-                warranty_title: "Warranty & Return Policy",
-                warranty_text_1: "New phones come with the manufacturer's warranty.",
-                warranty_text_2: "Used phones undergo a strict inspection and come with a store warranty.",
-                warranty_text_3: "Warranty does not cover damage caused by misuse (breakage, water...).",
-                warranty_text_4: "The customer has the right to inspect the device upon receipt.",
-                close_btn: "Close",
-                whatsapp_msg: "Hello Electro Ayman, I would like to inquire about the phone: {name} priced at {price} MAD. Is it still available?",
-                lang_display: "English"
+                lang_display: "العربية",
+                footer_desc: "الوجهة الأولى الموثوقة لبيع وشراء الهواتف الذكية في مدينة تطوان وباقي مدن المغرب."
             },
             fr: {
                 top_hours: "Horaires: de 10h à 21h",
                 top_address: "Tétouan, Marché Bab Nouader, Magasin 751",
-                nav_subtitle: "Achat & Vente de Téléphones Neufs et d'Occasion",
+                nav_subtitle: "Achat & Vente de Téléphones",
                 nav_contact: "Contactez-nous",
-                hero_title: "Les Meilleurs Appareils aux Meilleurs Prix<br>chez <span class='text-gray-400'>Electro Ayman</span>",
-                hero_desc: "Spécialisés dans l'achat et la vente de smartphones neufs et d'occasion avec garantie de qualité et livraison dans toutes les villes marocaines.",
-                feat_delivery: "🚚 Livraison Partout",
-                feat_warranty: "🛡️ Garantie Qualité",
-                feat_cod: "💳 Paiement à la Livraison",
-                search_ph: "Rechercher par nom ou modèle (ex: iPhone 15)...",
+                hero_title: "Les Meilleurs Appareils<br>chez <span class='text-gray-400'>Electro Ayman</span>",
+                hero_desc: "Spécialisés dans l'achat et la vente de smartphones avec garantie et livraison partout au Maroc.",
+                search_ph: "Rechercher...",
                 all_brands: "Toutes les marques",
                 all_conditions: "État (Tous)",
                 cond_new: "Neuf",
                 cond_used: "Occasion",
-                storage: "Stockage",
                 sort: "Trier par prix",
                 sort_asc: "Moins cher d'abord",
                 sort_desc: "Plus cher d'abord",
                 phones_list: "Téléphones Disponibles",
-                loading: "Chargement...",
-                found_phones: "{count} téléphones trouvés",
-                not_found: "Aucun résultat trouvé",
-                empty_title: "Téléphone introuvable",
-                empty_desc: "Essayez de modifier les filtres ou de chercher avec un autre nom",
+                found_phones: "{count} téléphones",
+                not_found: "Aucun résultat",
+                empty_title: "Introuvable",
+                empty_desc: "Essayez de modifier les filtres",
                 out_of_stock: "Rupture de Stock",
                 buy_now: "Commander",
                 contact_info: "Infos de Contact",
                 address_lbl: "Tétouan, Marché Bab Nouader<br>Magasin 751",
-                map_link: "Voir sur la carte",
-                work_hours: "De 10h à 21h",
-                pay_del: "Paiement et Livraison",
-                pay_cash: "Paiement en Espèces (Cash)",
-                pay_bank: "Virement Bancaire",
-                pay_card: "Paiement par Carte",
-                del_all: "Livraison disponible dans toutes les villes",
-                links: "Liens Importants",
-                about_link: "À Propos",
-                warranty_link: "Politique de Garantie",
-                home_link: "Accueil",
                 copyright: "&copy; 2026 Electro Ayman. Tous droits réservés.",
-                about_title: "À Propos",
-                about_text: "<strong>Electro Ayman</strong> est un magasin spécialisé dans l'achat et la vente de smartphones (neufs et d'occasion). Situés à Tétouan (Marché Bab Nouader, Magasin 751), nous nous efforçons de fournir les meilleurs appareils à des prix compétitifs avec une garantie de qualité.",
-                warranty_title: "Politique de Garantie",
-                warranty_text_1: "Les téléphones neufs sont couverts par la garantie du fabricant.",
-                warranty_text_2: "Les téléphones d'occasion sont rigoureusement testés et garantis par le magasin.",
-                warranty_text_3: "La garantie ne couvre pas les dommages liés à une mauvaise utilisation (casse, eau...).",
-                warranty_text_4: "Le client a le droit d'inspecter l'appareil à la réception.",
-                close_btn: "Fermer",
-                whatsapp_msg: "Bonjour Electro Ayman, je voudrais me renseigner sur le téléphone : {name} au prix de {price} DH. Est-il toujours disponible ?",
-                lang_display: "Français"
+                whatsapp_msg: "Bonjour Electro Ayman, je voudrais me renseigner sur le téléphone : {name} au prix de {price} DH.",
+                lang_display: "Français",
+                footer_desc: "La première destination de confiance pour acheter et vendre des smartphones à Tétouan et dans le reste du Maroc."
+            },
+            en: {
+                top_hours: "Hours: 10 AM to 9 PM",
+                top_address: "Tetouan, Bab Nouader, Shop 751",
+                nav_subtitle: "Buy & Sell Phones",
+                nav_contact: "Contact Us",
+                hero_title: "Best Devices<br>at <span class='text-gray-400'>Electro Ayman</span>",
+                hero_desc: "Specialized in buying and selling smartphones with warranty and delivery anywhere in Morocco.",
+                search_ph: "Search...",
+                all_brands: "All Brands",
+                all_conditions: "Condition (All)",
+                cond_new: "New",
+                cond_used: "Used",
+                sort: "Sort by Price",
+                sort_asc: "Cheapest First",
+                sort_desc: "Most Expensive First",
+                phones_list: "Available Phones",
+                found_phones: "{count} phones",
+                not_found: "No results",
+                empty_title: "Not Found",
+                empty_desc: "Try changing the filters",
+                out_of_stock: "Out of Stock",
+                buy_now: "Order Now",
+                contact_info: "Contact Info",
+                address_lbl: "Tetouan, Bab Nouader<br>Shop 751",
+                copyright: "&copy; 2026 Electro Ayman. All rights reserved.",
+                whatsapp_msg: "Hello Electro Ayman, I would like to ask about the phone: {name} priced at {price} DH.",
+                lang_display: "English",
+                footer_desc: "The trusted first destination to buy and sell smartphones in Tetouan and the rest of Morocco."
             }
         };
 
-        window.currentLang = localStorage.getItem('site_lang') || 'ar';
-        window.allProducts = []; // سيتم ملؤه من قاعدة البيانات
+        // Initialize Products securely
+        let allProducts = [];
+        const defaultProducts = [
+            { id: "1", brand: "Apple", model: "iPhone 15 Pro Max", storage: "256GB", ram: "8GB", color: "Black Titanium", condition: "مستعمل", battery: "95%", price: 9500, oldPrice: 10200, warranty: "3 Months", inStock: true, image: "https://placehold.co/400x500/f3f4f6/000000?text=iPhone+15+Pro+Max" },
+            { id: "2", brand: "Samsung", model: "Galaxy S24 Ultra", storage: "512GB", ram: "12GB", color: "Titanium Gray", condition: "جديد", battery: "100%", price: 11500, oldPrice: null, warranty: "1 Year", inStock: true, image: "https://placehold.co/400x500/f3f4f6/000000?text=Galaxy+S24+Ultra" }
+        ];
 
-        window.formatPrice = (price) => {
-            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " DH";
-        };
+        try {
+            const saved = localStorage.getItem('electro_phones_db');
+            if(saved) {
+                allProducts = JSON.parse(saved);
+            } else {
+                allProducts = [...defaultProducts];
+                localStorage.setItem('electro_phones_db', JSON.stringify(allProducts));
+            }
+        } catch(e) {
+            allProducts = [...defaultProducts];
+        }
 
-        // UI Helpers
-        window.showNotification = (msg, isError = false) => {
+        let currentLang = localStorage.getItem('electro_lang') || 'ar';
+
+        // UI Core Functions
+        function toggleLangMenu() {
+            document.getElementById('langMenuDropdown').classList.toggle('hidden');
+        }
+
+        function openModal(id) {
+            const el = document.getElementById(id);
+            if(el) el.classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            const el = document.getElementById(id);
+            if(el) el.classList.add('hidden');
+        }
+
+        function showNotification(msg, isError = false) {
             document.getElementById('notifMessage').innerText = msg;
             document.getElementById('notifTitle').innerText = isError ? 'خطأ' : 'نجاح';
             document.getElementById('notifTitle').className = isError ? 'text-xl font-bold text-red-600 mb-3' : 'text-xl font-bold text-green-600 mb-3';
-            window.openModal('modalNotification');
-        };
+            openModal('modalNotification');
+        }
 
-        window.openModal = (id) => {
-            document.getElementById(id).classList.remove('hidden');
-        };
-        window.closeModal = (id) => {
-            document.getElementById(id).classList.add('hidden');
-        };
-
-        window.setLang = (lang) => {
-            window.currentLang = lang;
-            localStorage.setItem('site_lang', lang);
-            
-            const htmlRoot = document.getElementById('html-root');
-            htmlRoot.lang = lang;
-            htmlRoot.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            document.documentElement.style.setProperty('--main-font', lang === 'ar' ? 'Tajawal' : 'Inter');
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
-                        el.placeholder = translations[lang][key];
-                    } else if (el.tagName === 'OPTION') {
-                        el.innerText = translations[lang][key];
-                    } else {
-                        el.innerHTML = translations[lang][key];
-                    }
-                }
-            });
-            document.getElementById('current-lang-display').innerText = translations[lang].lang_display;
-            window.filterProducts();
-        };
-
-        // --- FIREBASE LOGIC ---
-        const initAuth = async () => {
+        // Language Engine
+        function setLang(lang) {
             try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                listenToProducts();
-            } catch (error) {
-                console.error("Auth error:", error);
-                window.showNotification("حدث خطأ أثناء الاتصال.", true);
-            }
-        };
+                currentLang = lang;
+                localStorage.setItem('electro_lang', lang);
+                
+                const root = document.getElementById('html-root');
+                root.lang = lang;
+                root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                document.documentElement.style.setProperty('--main-font', lang === 'ar' ? 'Tajawal' : 'Inter');
 
-        const listenToProducts = () => {
-            onSnapshot(productsCollection, (snapshot) => {
-                window.allProducts = [];
-                snapshot.forEach(doc => {
-                    window.allProducts.push({ id: doc.id, ...doc.data() });
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+                            el.placeholder = translations[lang][key];
+                        } else if (el.tagName === 'OPTION') {
+                            el.innerText = translations[lang][key];
+                        } else {
+                            el.innerHTML = translations[lang][key];
+                        }
+                    }
                 });
                 
-                if (window.allProducts.length === 0) {
-                    seedDatabase();
-                } else {
-                    window.filterProducts();
-                    renderAdminProducts();
-                }
-            }, (error) => {
-                console.error("Error fetching products:", error);
-            });
-        };
-
-        const seedDatabase = async () => {
-            if(!auth.currentUser) return;
-            const initialPhones = [
-                { brand: "Apple", model: "iPhone 15 Pro Max", storage: "256GB", ram: "8GB", color: "Black Titanium", condition: "مستعمل", battery: "95%", price: 9500, oldPrice: 10200, warranty: "3 Months", inStock: true, image: "https://placehold.co/400x500/f3f4f6/000000?text=iPhone+15+Pro+Max" },
-                { brand: "Samsung", model: "Galaxy S24 Ultra", storage: "512GB", ram: "12GB", color: "Titanium Gray", condition: "جديد", battery: "100%", price: 11500, oldPrice: 12000, warranty: "1 Year", inStock: true, image: "https://placehold.co/400x500/f3f4f6/000000?text=Galaxy+S24+Ultra" }
-            ];
-            for (let phone of initialPhones) {
-                await addDoc(productsCollection, phone);
+                document.getElementById('current-lang-display').innerText = translations[lang].lang_display;
+                document.getElementById('langMenuDropdown').classList.add('hidden');
+                
+                renderProducts(); // Re-render to update product buttons text
+            } catch(e) {
+                console.error("Language switch error:", e);
             }
-        };
+        }
 
-        // --- ADMIN LOGIN LOGIC ---
-        window.handleLogin = async () => {
-            const email = document.getElementById('adminEmail').value;
-            const password = document.getElementById('adminPassword').value;
-            
-            if(!email || !password) {
-                window.showNotification("المرجو إدخال البريد الإلكتروني وكلمة السر", true);
-                return;
-            }
+        // WhatsApp Checkout
+        function buyProduct(brand, model, price) {
+            const phone = "212657942294";
+            const name = `${brand} ${model}`;
+            let msg = translations[currentLang].whatsapp_msg.replace('{name}', name).replace('{price}', price);
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
 
+        // Product Rendering
+        function formatPrice(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " DH";
+        }
+
+        function renderProducts() {
             try {
-                await signInWithEmailAndPassword(auth, email, password);
-                window.closeModal('modalLogin');
-                window.openModal('modalAdminDashboard');
-                document.getElementById('adminEmail').value = '';
-                document.getElementById('adminPassword').value = '';
-            } catch (error) {
-                if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
-                    if (email === ADMIN_EMAIL) {
-                        try {
-                            await createUserWithEmailAndPassword(auth, email, password);
-                            window.closeModal('modalLogin');
-                            window.openModal('modalAdminDashboard');
-                            window.showNotification("تم إنشاء حساب الإدارة بنجاح!");
-                        } catch(createErr) {
-                            window.showNotification("خطأ في إنشاء الحساب: " + createErr.message, true);
-                        }
-                    } else {
-                        window.showNotification("البريد الإلكتروني أو كلمة السر غير صحيحة.", true);
+                const search = document.getElementById('searchInput').value.toLowerCase();
+                const brand = document.getElementById('filterBrand').value;
+                const condition = document.getElementById('filterCondition').value;
+                const sortPrice = document.getElementById('filterPrice').value;
+
+                let filtered = allProducts.filter(p => {
+                    const matchSearch = p.model.toLowerCase().includes(search) || p.brand.toLowerCase().includes(search);
+                    const matchBrand = brand ? p.brand === brand : true;
+                    const matchCondition = condition ? p.condition === condition : true;
+                    return matchSearch && matchBrand && matchCondition;
+                });
+
+                if (sortPrice === 'asc') filtered.sort((a, b) => a.price - b.price);
+                else if (sortPrice === 'desc') filtered.sort((a, b) => b.price - a.price);
+
+                const grid = document.getElementById('products-grid');
+                const emptyState = document.getElementById('empty-state');
+                const resultsCount = document.getElementById('resultsCount');
+                
+                grid.innerHTML = '';
+                
+                if (filtered.length === 0) {
+                    grid.classList.add('hidden');
+                    emptyState.classList.remove('hidden');
+                    resultsCount.innerText = translations[currentLang].not_found;
+                    return;
+                }
+
+                grid.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+                resultsCount.innerText = translations[currentLang].found_phones.replace('{count}', filtered.length);
+
+                filtered.forEach(product => {
+                    const conditionStr = product.condition === 'جديد' ? translations[currentLang].cond_new : translations[currentLang].cond_used;
+                    
+                    const card = document.createElement('div');
+                    card.className = "bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col group";
+                    
+                    let overlay = '';
+                    if(!product.inStock) {
+                        overlay = `<div class="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-10 flex items-center justify-center">
+                            <span class="bg-red-600 text-white font-black px-6 py-2 rounded-xl shadow-lg border-2 border-white transform -rotate-12 text-lg uppercase tracking-wider">${translations[currentLang].out_of_stock}</span>
+                        </div>`;
                     }
-                } else {
-                    window.showNotification("خطأ في تسجيل الدخول.", true);
-                }
-            }
-        };
-
-        window.handleLogout = async () => {
-            await signOut(auth);
-            window.closeModal('modalAdminDashboard');
-            initAuth();
-            window.showNotification("تم تسجيل الخروج بنجاح.");
-        };
-
-        window.handleForgotPassword = async () => {
-            const email = document.getElementById('adminEmail').value;
-            if(!email) {
-                window.showNotification("المرجو كتابة البريد الإلكتروني أولاً في الخانة المخصصة.", true);
-                return;
-            }
-            try {
-                await sendPasswordResetEmail(auth, email);
-                window.showNotification("تم إرسال رابط تغيير كلمة السر إلى بريدك الإلكتروني.");
-            } catch (error) {
-                window.showNotification("حدث خطأ أثناء إرسال الرابط: " + error.message, true);
-            }
-        };
-
-        // --- PRODUCTS RENDER ---
-        window.renderProducts = (productsToRender) => {
-            const grid = document.getElementById('products-grid');
-            const emptyState = document.getElementById('empty-state');
-            const resultsCount = document.getElementById('resultsCount');
-            
-            grid.innerHTML = '';
-            
-            if (productsToRender.length === 0) {
-                grid.classList.add('hidden');
-                emptyState.classList.remove('hidden');
-                resultsCount.innerText = translations[window.currentLang].not_found;
-                return;
-            }
-
-            grid.classList.remove('hidden');
-            emptyState.classList.add('hidden');
-            resultsCount.innerText = translations[window.currentLang].found_phones.replace('{count}', productsToRender.length);
-
-            productsToRender.forEach(product => {
-                const conditionStr = product.condition === 'جديد' ? translations[window.currentLang].cond_new : translations[window.currentLang].cond_used;
-                const outOfStockStr = translations[window.currentLang].out_of_stock;
-                const buyNowStr = translations[window.currentLang].buy_now;
-
-                const stockOverlay = !product.inStock 
-                    ? `<div class="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-10 flex items-center justify-center">
-                        <span class="bg-red-600 text-white font-black px-6 py-2 rounded-xl shadow-lg border-2 border-white transform -rotate-12 text-lg uppercase tracking-wider">${outOfStockStr}</span>
-                       </div>` 
-                    : '';
-                
-                const conditionBadgeColor = product.condition === 'جديد' ? 'bg-brand-900 text-white' : 'bg-gray-200 text-gray-800';
-                
-                const oldPriceHtml = product.oldPrice 
-                    ? `<span class="text-gray-400 line-through text-xs font-bold">${window.formatPrice(product.oldPrice)}</span>` 
-                    : '';
-
-                const buyBtnClass = product.inStock 
-                    ? 'bg-whatsapp hover:bg-green-600 text-white shadow-md hover:shadow-lg hover:-translate-y-0.5' 
-                    : 'bg-gray-200 text-gray-400 cursor-not-allowed';
-                
-                const buyBtnAction = product.inStock 
-                    ? `onclick="window.buyOnWhatsApp('${product.brand} ${product.model}', ${product.price})"` 
-                    : 'disabled';
-
-                const card = `
-                    <div class="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col group">
-                        ${stockOverlay}
+                    
+                    const oldPriceHtml = product.oldPrice ? `<span class="text-gray-400 line-through text-xs font-bold">${formatPrice(product.oldPrice)}</span>` : '';
+                    
+                    let btnClass = product.inStock ? "bg-whatsapp hover:bg-green-600 text-white shadow-md hover:-translate-y-0.5 cursor-pointer" : "bg-gray-200 text-gray-400 cursor-not-allowed";
+                    
+                    card.innerHTML = `
+                        ${overlay}
                         <div class="absolute top-4 end-4 z-0 flex flex-col gap-2">
-                            <span class="${conditionBadgeColor} text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">${conditionStr}</span>
+                            <span class="${product.condition === 'جديد' ? 'bg-brand-900 text-white' : 'bg-gray-200 text-gray-800'} text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">${conditionStr}</span>
                         </div>
                         <div class="absolute top-4 start-4 z-0">
-                            <span class="bg-white text-gray-800 border border-gray-200 text-xs font-bold px-2 py-1.5 rounded-lg flex items-center gap-1 shadow-sm">
-                                🔋 ${product.battery}
-                            </span>
+                            <span class="bg-white text-gray-800 border border-gray-200 text-xs font-bold px-2 py-1.5 rounded-lg flex items-center gap-1 shadow-sm">🔋 ${product.battery}</span>
                         </div>
                         <div class="h-64 bg-gradient-to-b from-gray-50 to-white flex items-center justify-center p-8 border-b border-gray-50">
                             <img src="${product.image}" alt="${product.model}" class="h-full w-auto object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-md">
@@ -690,76 +558,67 @@
                             <p class="text-[11px] text-gray-400 font-bold uppercase tracking-widest mb-1.5">${product.brand}</p>
                             <h3 class="font-black text-gray-900 text-xl leading-tight mb-4 line-clamp-2" dir="ltr">${product.model}</h3>
                             <div class="grid grid-cols-2 gap-2 mb-5 text-xs font-bold text-gray-600 bg-gray-50/80 p-3 rounded-2xl border border-gray-100">
-                                <div class="flex items-center gap-1.5"><span class="text-base">💾</span> <span dir="ltr">${product.storage}</span></div>
-                                <div class="flex items-center gap-1.5"><span class="text-base">⚡</span> <span dir="ltr">${product.ram} RAM</span></div>
-                                <div class="flex items-center gap-1.5"><span class="text-base">🎨</span> <span>${product.color}</span></div>
-                                <div class="flex items-center gap-1.5"><span class="text-base">🛡️</span> <span>${product.warranty}</span></div>
+                                <div class="flex items-center gap-1.5"><span>💾</span> <span dir="ltr">${product.storage}</span></div>
+                                <div class="flex items-center gap-1.5"><span>⚡</span> <span dir="ltr">${product.ram}</span></div>
+                                <div class="flex items-center gap-1.5"><span>🎨</span> <span>${product.color}</span></div>
+                                <div class="flex items-center gap-1.5"><span>🛡️</span> <span>${product.warranty}</span></div>
                             </div>
-                            <div class="mt-auto pt-5 border-t border-gray-100 flex items-center justify-between">
+                            <div class="mt-auto pt-5 border-t border-gray-100 flex items-center justify-between relative z-20">
                                 <div class="flex flex-col">
                                     ${oldPriceHtml}
-                                    <span class="text-brand-900 font-black text-2xl tracking-tight">${window.formatPrice(product.price)}</span>
+                                    <span class="text-brand-900 font-black text-2xl tracking-tight">${formatPrice(product.price)}</span>
                                 </div>
-                                <button ${buyBtnAction} class="${buyBtnClass} p-3.5 rounded-2xl transition-all flex items-center gap-2 font-bold text-sm">
+                                <button onclick="${product.inStock ? `buyProduct('${product.brand.replace(/'/g, "\\'")}', '${product.model.replace(/'/g, "\\'")}', ${product.price})` : 'return false'}" class="${btnClass} p-3.5 rounded-2xl transition-all flex items-center gap-2 font-bold text-sm">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-                                    <span class="hidden sm:inline">${buyNowStr}</span>
+                                    <span class="hidden sm:inline">${translations[currentLang].buy_now}</span>
                                 </button>
                             </div>
                         </div>
-                    </div>
-                `;
-                grid.innerHTML += card;
-            });
-        };
-
-        window.buyOnWhatsApp = (productName, price) => {
-            const phone = "212657942294";
-            let msgTemplate = translations[window.currentLang].whatsapp_msg;
-            let msg = msgTemplate.replace('{name}', productName).replace('{price}', price);
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-        };
-
-        window.filterProducts = () => {
-            const search = document.getElementById('searchInput').value.toLowerCase();
-            const brand = document.getElementById('filterBrand').value;
-            const condition = document.getElementById('filterCondition').value;
-            const storage = document.getElementById('filterStorage').value;
-            const sortPrice = document.getElementById('filterPrice').value;
-
-            let filtered = window.allProducts.filter(p => {
-                const matchSearch = p.model.toLowerCase().includes(search) || p.brand.toLowerCase().includes(search);
-                const matchBrand = brand ? p.brand === brand : true;
-                const matchCondition = condition ? p.condition === condition : true;
-                const matchStorage = storage ? p.storage === storage : true;
-                return matchSearch && matchBrand && matchCondition && matchStorage;
-            });
-
-            if (sortPrice === 'asc') {
-                filtered.sort((a, b) => a.price - b.price);
-            } else if (sortPrice === 'desc') {
-                filtered.sort((a, b) => b.price - a.price);
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch(e) {
+                console.error("Render error:", e);
             }
+        }
 
-            window.renderProducts(filtered);
-        };
+        // Attach event listeners for filters
+        document.getElementById('searchInput').addEventListener('input', renderProducts);
+        document.getElementById('filterBrand').addEventListener('change', renderProducts);
+        document.getElementById('filterCondition').addEventListener('change', renderProducts);
+        document.getElementById('filterPrice').addEventListener('change', renderProducts);
 
-        document.getElementById('searchInput').addEventListener('input', window.filterProducts);
-        document.getElementById('filterBrand').addEventListener('change', window.filterProducts);
-        document.getElementById('filterCondition').addEventListener('change', window.filterProducts);
-        document.getElementById('filterStorage').addEventListener('change', window.filterProducts);
-        document.getElementById('filterPrice').addEventListener('change', window.filterProducts);
+        // Admin Functionality
+        function handleLogin() {
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            if(email === "anwar0707181@gmail.com" && password === "Anwar0707") {
+                document.getElementById('adminEmail').value = '';
+                document.getElementById('adminPassword').value = '';
+                closeModal('modalLogin');
+                openModal('modalAdminDashboard');
+                renderAdminProducts();
+            } else {
+                showNotification("البريد الإلكتروني أو كلمة السر غير صحيحة.", true);
+            }
+        }
 
-        // --- ADMIN CRUD UI ---
-        const renderAdminProducts = () => {
+        function handleLogout() {
+            closeModal('modalAdminDashboard');
+            showNotification("تم تسجيل الخروج بنجاح.");
+        }
+
+        function renderAdminProducts() {
             const tbody = document.getElementById('adminProductsList');
             tbody.innerHTML = '';
             
-            window.allProducts.forEach(product => {
+            allProducts.forEach(product => {
                 const stockBadge = product.inStock 
                     ? '<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">متوفر</span>'
                     : '<span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold">نفذ</span>';
-
-                const tr = `
+                
+                tbody.innerHTML += `
                     <tr class="hover:bg-gray-50 transition-colors">
                         <td class="p-4 border-b border-gray-100 w-16">
                             <img src="${product.image}" class="w-12 h-12 object-contain bg-gray-50 rounded-lg p-1 border border-gray-200">
@@ -772,51 +631,25 @@
                         <td class="p-4 border-b border-gray-100">${product.condition}</td>
                         <td class="p-4 border-b border-gray-100">${stockBadge}</td>
                         <td class="p-4 border-b border-gray-100 text-center space-x-2 space-x-reverse flex justify-center">
-                            <button onclick="window.editProduct('${product.id}')" class="text-blue-500 hover:text-blue-700 font-bold bg-blue-50 p-2 rounded-lg transition-colors">تعديل</button>
-                            <button onclick="window.toggleStock('${product.id}', ${!product.inStock})" class="text-yellow-600 hover:text-yellow-800 font-bold bg-yellow-50 p-2 rounded-lg transition-colors">مخزون</button>
-                            <button onclick="window.deleteProduct('${product.id}')" class="text-red-500 hover:text-red-700 font-bold bg-red-50 p-2 rounded-lg transition-colors">حذف</button>
+                            <button onclick="toggleStock('${product.id}')" class="text-yellow-600 hover:text-yellow-800 font-bold bg-yellow-50 p-2 rounded-lg transition-colors">مخزون</button>
+                            <button onclick="deleteProduct('${product.id}')" class="text-red-500 hover:text-red-700 font-bold bg-red-50 p-2 rounded-lg transition-colors">حذف</button>
                         </td>
                     </tr>
                 `;
-                tbody.innerHTML += tr;
             });
-        };
+        }
 
-        window.openProductModal = () => {
+        function openProductModal() {
             document.getElementById('productForm').reset();
-            document.getElementById('prodId').value = '';
-            document.getElementById('productFormTitle').innerText = 'إضافة هاتف جديد';
-            window.openModal('modalProductForm');
-        };
+            document.getElementById('prodId').value = "prod_" + Date.now();
+            openModal('modalProductForm');
+        }
 
-        window.editProduct = (id) => {
-            const product = window.allProducts.find(p => p.id === id);
-            if (!product) return;
-            
-            document.getElementById('prodId').value = product.id;
-            document.getElementById('prodBrand').value = product.brand;
-            document.getElementById('prodModel').value = product.model;
-            document.getElementById('prodStorage').value = product.storage;
-            document.getElementById('prodRam').value = product.ram;
-            document.getElementById('prodColor').value = product.color;
-            document.getElementById('prodBattery').value = product.battery;
-            document.getElementById('prodCondition').value = product.condition;
-            document.getElementById('prodWarranty').value = product.warranty;
-            document.getElementById('prodPrice').value = product.price;
-            document.getElementById('prodOldPrice').value = product.oldPrice || '';
-            document.getElementById('prodImage').value = product.image;
-            document.getElementById('prodInStock').checked = product.inStock;
-            
-            document.getElementById('productFormTitle').innerText = 'تعديل الهاتف';
-            window.openModal('modalProductForm');
-        };
-
-        window.handleSaveProduct = async (e) => {
+        function handleSaveProduct(e) {
             e.preventDefault();
-            if(!auth.currentUser) return;
-
-            const id = document.getElementById('prodId').value;
+            
             const newProduct = {
+                id: document.getElementById('prodId').value,
                 brand: document.getElementById('prodBrand').value,
                 model: document.getElementById('prodModel').value,
                 storage: document.getElementById('prodStorage').value,
@@ -830,48 +663,43 @@
                 image: document.getElementById('prodImage').value,
                 inStock: document.getElementById('prodInStock').checked
             };
+            
+            allProducts.push(newProduct);
+            localStorage.setItem('electro_phones_db', JSON.stringify(allProducts));
+            
+            renderAdminProducts();
+            renderProducts();
+            closeModal('modalProductForm');
+            showNotification("تمت إضافة الهاتف بنجاح.");
+        }
 
+        function deleteProduct(id) {
+            allProducts = allProducts.filter(p => p.id !== id);
+            localStorage.setItem('electro_phones_db', JSON.stringify(allProducts));
+            renderAdminProducts();
+            renderProducts();
+            showNotification("تم حذف الهاتف بنجاح.");
+        }
+
+        function toggleStock(id) {
+            let product = allProducts.find(p => p.id === id);
+            if(product) {
+                product.inStock = !product.inStock;
+                localStorage.setItem('electro_phones_db', JSON.stringify(allProducts));
+                renderAdminProducts();
+                renderProducts();
+            }
+        }
+
+        // Init
+        window.onload = () => {
             try {
-                if (id) {
-                    const docRef = doc(productsCollection, id);
-                    await updateDoc(docRef, newProduct);
-                    window.showNotification("تم تعديل الهاتف بنجاح.");
-                } else {
-                    await addDoc(productsCollection, newProduct);
-                    window.showNotification("تمت إضافة الهاتف بنجاح.");
-                }
-                window.closeModal('modalProductForm');
-            } catch (error) {
-                window.showNotification("خطأ أثناء الحفظ: " + error.message, true);
+                setLang(currentLang);
+                renderProducts();
+            } catch(e) {
+                console.error("Init error:", e);
             }
         };
-
-        window.deleteProduct = async (id) => {
-            if(!auth.currentUser) return;
-            try {
-                const docRef = doc(productsCollection, id);
-                await deleteDoc(docRef);
-                window.showNotification("تم حذف الهاتف.");
-            } catch (error) {
-                window.showNotification("خطأ أثناء الحذف: " + error.message, true);
-            }
-        };
-
-        window.toggleStock = async (id, newStatus) => {
-            if(!auth.currentUser) return;
-            try {
-                const docRef = doc(productsCollection, id);
-                await updateDoc(docRef, { inStock: newStatus });
-            } catch (error) {
-                window.showNotification("خطأ أثناء تحديث المخزون.", true);
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            window.setLang(window.currentLang);
-            initAuth(); 
-        });
     </script>
 </body>
 </html>
-```
