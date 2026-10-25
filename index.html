@@ -50,10 +50,11 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 
-                <!-- Logo Code -->
+                <!-- Logo Code Instead of Image -->
                 <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
                     <div class="flex items-center gap-2 sm:gap-3" dir="ltr">
                         <div class="relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-gray-900 to-black rounded-xl shadow-lg border border-gray-800">
+                            <!-- Lightning Icon -->
                             <svg class="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                         </div>
                         <div class="flex flex-col justify-center items-start">
@@ -67,6 +68,7 @@
 
                 <!-- Actions -->
                 <div class="flex items-center gap-2 sm:gap-4 relative">
+                    
                     <!-- Language Switcher -->
                     <div class="relative z-50">
                         <div onclick="toggleLangMenu()" class="flex items-center gap-1 text-gray-600 hover:text-brand-900 font-bold text-xs sm:text-sm bg-gray-100/80 px-2 sm:px-3 py-2 rounded-xl transition-all border border-gray-200 cursor-pointer">
@@ -81,7 +83,7 @@
                     </div>
 
                     <!-- Admin Login Btn -->
-                    <button onclick="openModal('modalLogin')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 p-2 sm:p-2.5 rounded-xl transition-all shadow-sm border border-gray-200" title="لوحة التحكم">
+                    <button onclick="openModal('modalLogin')" class="bg-gray-100 hover:bg-gray-200 text-gray-800 p-2 sm:p-2.5 rounded-xl transition-all shadow-sm border border-gray-200">
                         <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                     </button>
                 </div>
@@ -132,35 +134,29 @@
         </div>
 
         <!-- Products Grid -->
-        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Products will be injected here -->
+        </div>
     </div>
 
-    <!-- Product Details Modal with Multiple Images & Color Selector -->
+    <!-- Product Details Modal -->
     <div id="modalProductDetails" class="fixed inset-0 bg-black/70 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm py-10 overflow-y-auto">
         <div class="bg-white rounded-3xl w-full max-w-4xl shadow-2xl relative my-auto flex flex-col md:flex-row overflow-hidden border border-gray-200">
             <button onclick="closeModal('modalProductDetails')" class="absolute top-4 start-4 text-gray-400 hover:text-gray-900 transition-colors bg-white/80 backdrop-blur rounded-full p-2 z-10 shadow-sm border border-gray-200">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-            
-            <!-- Images Gallery Section -->
-            <div class="md:w-1/2 bg-gray-50 p-6 flex flex-col items-center justify-center border-b md:border-b-0 md:border-e border-gray-200">
-                <div class="h-64 flex items-center justify-center mb-4">
-                    <img id="detailMainImage" src="" alt="Product" class="max-h-full w-auto object-contain drop-shadow-xl transition-all duration-300">
-                </div>
-                <!-- Thumbnails -->
-                <div id="detailThumbnails" class="flex gap-2 justify-center overflow-x-auto w-full"></div>
+            <div class="md:w-1/2 bg-gray-50 p-8 flex items-center justify-center min-h-[300px] border-b md:border-b-0 md:border-e border-gray-200">
+                <img id="detailImage" src="" alt="Product" class="max-h-80 w-auto object-contain drop-shadow-xl hover:scale-105 transition-transform">
             </div>
-
-            <!-- Details & Options Section -->
             <div class="md:w-1/2 p-6 md:p-8 flex flex-col">
                 <div class="flex justify-between items-start mb-2">
                     <span id="detailCondition" class="bg-brand-900 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm"></span>
                     <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">🛡️ <span id="detailWarranty"></span></span>
                 </div>
                 <p id="detailBrand" class="text-sm text-gray-500 font-bold uppercase tracking-widest mb-1"></p>
-                <h2 id="detailTitle" class="text-2xl md:text-3xl font-black text-gray-900 mb-4 leading-tight" dir="ltr"></h2>
+                <h2 id="detailTitle" class="text-2xl md:text-3xl font-black text-gray-900 mb-6 leading-tight" dir="ltr"></h2>
                 
-                <div class="grid grid-cols-2 gap-3 mb-4">
+                <div class="grid grid-cols-2 gap-3 mb-6">
                     <div class="bg-gray-50 p-3 rounded-2xl border border-gray-100 flex items-center gap-3">
                         <span class="text-xl">💾</span>
                         <div><p class="text-[10px] text-gray-500 mb-0.5">التخزين</p><p id="detailStorage" class="font-bold text-gray-900 text-sm" dir="ltr"></p></div>
@@ -170,23 +166,21 @@
                         <div><p class="text-[10px] text-gray-500 mb-0.5">الرام</p><p id="detailRam" class="font-bold text-gray-900 text-sm" dir="ltr"></p></div>
                     </div>
                     <div class="bg-gray-50 p-3 rounded-2xl border border-gray-100 flex items-center gap-3">
+                        <span class="text-xl">🎨</span>
+                        <div><p class="text-[10px] text-gray-500 mb-0.5">اللون</p><p id="detailColor" class="font-bold text-gray-900 text-sm"></p></div>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-2xl border border-gray-100 flex items-center gap-3">
                         <span class="text-xl">🔋</span>
                         <div><p class="text-[10px] text-gray-500 mb-0.5">البطارية</p><p id="detailBattery" class="font-bold text-gray-900 text-sm" dir="ltr"></p></div>
                     </div>
                 </div>
-
-                <!-- Color Selector Option -->
-                <div class="mb-4">
-                    <label class="block text-xs font-bold text-gray-500 mb-2">اختر اللون المتوفر:</label>
-                    <div id="detailColorOptions" class="flex flex-wrap gap-2"></div>
-                </div>
                 
-                <div class="mt-auto border-t border-gray-100 pt-4">
-                    <div class="mb-3">
-                        <p class="text-xs text-gray-500 font-bold mb-0.5">الثمن النهائي:</p>
-                        <span id="detailPrice" class="text-brand-900 font-black text-2xl tracking-tight"></span>
+                <div class="mt-auto border-t border-gray-100 pt-6">
+                    <div class="mb-4">
+                        <p class="text-sm text-gray-500 font-bold mb-1">الثمن النهائي:</p>
+                        <span id="detailPrice" class="text-brand-900 font-black text-3xl tracking-tight"></span>
                     </div>
-                    <button id="btnOpenCheckout" class="w-full bg-brand-900 hover:bg-gray-800 text-white py-3.5 rounded-2xl font-bold text-md transition-all shadow-lg flex items-center justify-center gap-2">
+                    <button id="btnOpenCheckout" class="w-full bg-brand-900 hover:bg-gray-800 text-white py-4 rounded-2xl font-bold text-lg transition-all shadow-lg flex items-center justify-center gap-2">
                         تقديم الطلب 🛒
                     </button>
                 </div>
@@ -208,7 +202,7 @@
                 <div><input type="tel" id="clientPhone" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="رقم الهاتف: 06XXXXXXXX"></div>
                 <div><textarea id="clientAddress" required rows="2" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" placeholder="العنوان والمدينة..."></textarea></div>
                 <button type="submit" class="w-full bg-whatsapp hover:bg-green-600 text-white rounded-xl py-4 font-bold transition-colors shadow-lg flex items-center justify-center gap-2 mt-4 text-lg">
-                    تأكيد وإرسال عبر الواتساب 💬
+                    تأكيد وإرسال عبر الواتساب
                 </button>
             </form>
         </div>
@@ -226,11 +220,12 @@
             <div class="space-y-4">
                 <input type="email" id="adminEmail" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="anwar0707181@gmail.com">
                 <input type="password" id="adminPassword" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 outline-none focus:ring-2 focus:ring-brand-900" dir="ltr" placeholder="كلمة السر">
-                <div class="flex justify-between items-center text-xs">
-                    <button type="button" onclick="forgotPassword()" class="text-brand-900 font-bold hover:underline">هل نسيت كلمة السر؟</button>
+                <div class="text-start mt-1">
+                    <button type="button" onclick="forgotPassword()" class="text-xs text-brand-900 font-bold hover:underline">هل نسيت كلمة السر؟</button>
                 </div>
                 <button onclick="handleLogin()" class="w-full bg-brand-900 text-white rounded-xl py-3.5 font-bold hover:bg-gray-800 transition-colors shadow-md mt-2">تسجيل الدخول</button>
             </div>
+            <!-- Notification Area inside login -->
             <div id="loginAlert" class="hidden mt-4 text-center text-sm font-bold px-3 py-2 rounded-lg"></div>
         </div>
     </div>
@@ -263,34 +258,32 @@
         </div>
     </div>
 
-    <!-- Add Product Form -->
+    <!-- Add Product Form inside Dashboard -->
     <div id="modalProductForm" class="fixed inset-0 bg-black/70 z-[110] hidden flex items-center justify-center px-4 overflow-y-auto py-10">
         <div class="bg-white rounded-3xl p-6 md:p-8 w-full max-w-2xl shadow-2xl relative my-auto border border-gray-200">
             <button type="button" onclick="closeModal('modalProductForm')" class="absolute top-5 start-5 text-gray-400 hover:text-gray-900 bg-gray-100 rounded-full p-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-            <h3 class="text-2xl font-black text-brand-900 mb-6">إضافة أو تعديل هاتف</h3>
+            <h3 class="text-2xl font-black text-brand-900 mb-6">إضافة هاتف</h3>
             <form id="productForm" onsubmit="saveProduct(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input type="hidden" id="prodId">
                 <div><input type="text" id="prodBrand" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" placeholder="الماركة (Apple, Samsung)"></div>
-                <div><input type="text" id="prodModel" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" placeholder="الموديل (iPhone 15)"></div>
+                <div><input type="text" id="prodModel" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" placeholder="الموديل (iPhone 14)"></div>
                 <div><input type="text" id="prodStorage" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" dir="ltr" placeholder="التخزين: 256GB"></div>
                 <div><input type="text" id="prodRam" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" dir="ltr" placeholder="الرام: 8GB"></div>
-                <div><input type="text" id="prodColors" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" placeholder="الألوان (مثال: أسود,أبيض,ذهبي)"></div>
+                <div><input type="text" id="prodColor" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" placeholder="اللون"></div>
                 <div><input type="text" id="prodBattery" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" dir="ltr" placeholder="البطارية: 100%"></div>
                 <div>
                     <select id="prodCondition" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4">
                         <option value="جديد">جديد</option><option value="مستعمل">مستعمل</option>
                     </select>
                 </div>
-                <div><input type="text" id="prodWarranty" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" placeholder="الضمان: 6 أشهر"></div>
+                <div><input type="text" id="prodWarranty" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" placeholder="الضمان: 6 Months"></div>
                 <div><input type="number" id="prodPrice" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" dir="ltr" placeholder="الثمن (درهم)"></div>
-                <div class="col-span-1 md:col-span-2">
-                    <textarea id="prodImages" required rows="2" class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4 font-mono text-xs" dir="ltr" placeholder="روابط الصور مفصولة بفاصلة , (أدخل 3 إلى 4 روابط)"></textarea>
-                </div>
+                <div><input type="url" id="prodImage" required class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 px-4" dir="ltr" placeholder="رابط الصورة https://..."></div>
                 <div class="col-span-1 md:col-span-2 flex items-center gap-3">
                     <input type="checkbox" id="prodInStock" checked class="w-5 h-5 rounded text-brand-900">
                     <label class="font-bold">متوفر في المخزون</label>
                 </div>
-                <button type="submit" class="col-span-1 md:col-span-2 bg-brand-900 text-white rounded-xl py-3.5 font-bold mt-4">حفظ المنتج</button>
+                <button type="submit" class="col-span-1 md:col-span-2 bg-brand-900 text-white rounded-xl py-3.5 font-bold mt-4">حفظ</button>
             </form>
         </div>
     </div>
@@ -300,13 +293,16 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <div>
+                    <!-- Footer Logo Code -->
                     <div class="flex items-center gap-2 mb-6" dir="ltr">
                         <div class="relative flex items-center justify-center w-12 h-12 bg-white rounded-xl shadow-lg">
                             <svg class="w-7 h-7 text-yellow-600" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                         </div>
-                        <span class="font-black text-2xl tracking-wider text-white leading-none">
-                            ELECTRO<span class="text-yellow-500">AYMAN</span>
-                        </span>
+                        <div class="flex flex-col justify-center items-start">
+                            <span class="font-black text-2xl tracking-wider text-white leading-none">
+                                ELECTRO<span class="text-yellow-500">AYMAN</span>
+                            </span>
+                        </div>
                     </div>
                     <p class="text-gray-400 text-sm leading-relaxed mb-6 font-medium">
                         الوجهة الأولى الموثوقة لبيع وشراء الهواتف الذكية في مدينة تطوان وباقي مدن المغرب.
@@ -352,28 +348,15 @@
         };
 
         const defaultProducts = [
-            { 
-                id: "p1", brand: "Apple", model: "iPhone 15 Pro Max", storage: "256GB", ram: "8GB", colors: ["Titanium Gray", "Black", "Gold"], condition: "مستعمل", battery: "95%", price: 9500, warranty: "3 Months", inStock: true, 
-                images: [
-                    "https://placehold.co/400x500/f3f4f6/000000?text=iPhone+15+Pro+1", 
-                    "https://placehold.co/400x500/e5e7eb/1f2937?text=iPhone+15+Pro+2", 
-                    "https://placehold.co/400x500/d1d5db/111827?text=iPhone+15+Pro+3"
-                ] 
-            },
-            { 
-                id: "p2", brand: "Samsung", model: "Galaxy S24 Ultra", storage: "512GB", ram: "12GB", colors: ["Phantom Black", "Grey", "Violet"], condition: "جديد", battery: "100%", price: 11500, warranty: "1 Year", inStock: true, 
-                images: [
-                    "https://placehold.co/400x500/f3f4f6/000000?text=Galaxy+S24+1", 
-                    "https://placehold.co/400x500/e5e7eb/1f2937?text=Galaxy+S24+2"
-                ] 
-            }
+            { id: "p1", brand: "Apple", model: "iPhone 15 Pro Max", storage: "256GB", ram: "8GB", color: "Titanium", condition: "مستعمل", battery: "95%", price: 9500, warranty: "3 Months", inStock: true, image: "https://placehold.co/400x500/f3f4f6/000000?text=iPhone+15+Pro+Max" },
+            { id: "p2", brand: "Samsung", model: "Galaxy S24 Ultra", storage: "512GB", ram: "12GB", color: "Black", condition: "جديد", battery: "100%", price: 11500, warranty: "1 Year", inStock: true, image: "https://placehold.co/400x500/f3f4f6/000000?text=Galaxy+S24+Ultra" }
         ];
 
         let allProducts = JSON.parse(localStorage.getItem('electro_phones_db')) || [...defaultProducts];
         let currentLang = localStorage.getItem('electro_lang') || 'ar';
         let currentSelectedProduct = null;
-        let selectedColor = "";
 
+        // UI Functions
         function toggleLangMenu() { document.getElementById('langMenuDropdown').classList.toggle('hidden'); }
         function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
         function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
@@ -397,6 +380,7 @@
             renderProducts();
         }
 
+        // Display Products
         function renderProducts() {
             const search = document.getElementById('searchInput').value.toLowerCase();
             const brand = document.getElementById('filterBrand').value;
@@ -412,13 +396,12 @@
 
             filtered.forEach(p => {
                 const stockOverlay = !p.inStock ? `<div class="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-10 flex items-center justify-center"><span class="bg-red-600 text-white font-black px-4 py-2 rounded-xl border-2 border-white transform -rotate-12 uppercase">نفذ من المخزون</span></div>` : '';
-                const mainImg = p.images && p.images.length > 0 ? p.images[0] : '';
                 grid.innerHTML += `
                     <div class="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col cursor-pointer group" onclick="${p.inStock ? `showDetails('${p.id}')` : ''}">
                         ${stockOverlay}
                         <div class="absolute top-4 end-4 z-0"><span class="bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">${p.condition}</span></div>
                         <div class="absolute top-4 start-4 z-0"><span class="bg-white text-gray-800 text-xs font-bold px-2 py-1.5 rounded-lg border border-gray-200">🔋 ${p.battery}</span></div>
-                        <div class="h-56 bg-gray-50 flex items-center justify-center p-6"><img src="${mainImg}" class="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"></div>
+                        <div class="h-56 bg-gray-50 flex items-center justify-center p-6"><img src="${p.image}" class="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"></div>
                         <div class="p-6 flex-1 flex flex-col">
                             <p class="text-[11px] text-gray-400 font-bold uppercase tracking-widest mb-1">${p.brand}</p>
                             <h3 class="font-black text-gray-900 text-xl leading-tight mb-4" dir="ltr">${p.model}</h3>
@@ -435,54 +418,23 @@
             });
         }
 
-        // Product Details with Multiple Images Gallery & Color Selector
+        // Product Details & Checkout
         function showDetails(id) {
             const p = allProducts.find(x => x.id === id); if(!p) return;
             currentSelectedProduct = p;
-            selectedColor = p.colors && p.colors.length > 0 ? p.colors[0] : '';
-
-            // Main Image
-            document.getElementById('detailMainImage').src = p.images[0];
-            
-            // Thumbnails Gallery
-            const thumbContainer = document.getElementById('detailThumbnails');
-            thumbContainer.innerHTML = '';
-            p.images.forEach((img, idx) => {
-                thumbContainer.innerHTML += `<img src="${img}" onclick="document.getElementById('detailMainImage').src='${img}'" class="w-14 h-14 object-cover rounded-xl border-2 border-gray-200 cursor-pointer hover:border-brand-900 transition-all bg-white p-1">`;
-            });
-
+            document.getElementById('detailImage').src = p.image;
             document.getElementById('detailBrand').innerText = p.brand;
             document.getElementById('detailTitle').innerText = p.model;
             document.getElementById('detailStorage').innerText = p.storage;
             document.getElementById('detailRam').innerText = p.ram;
+            document.getElementById('detailColor').innerText = p.color;
             document.getElementById('detailBattery').innerText = p.battery;
             document.getElementById('detailCondition').innerText = p.condition;
             document.getElementById('detailWarranty').innerText = p.warranty;
             document.getElementById('detailPrice').innerText = formatPrice(p.price);
-
-            // Render Color Options
-            const colorContainer = document.getElementById('detailColorOptions');
-            colorContainer.innerHTML = '';
-            if(p.colors) {
-                p.colors.forEach(col => {
-                    const activeClass = col === selectedColor ? 'border-brand-900 bg-brand-900 text-white' : 'border-gray-200 bg-gray-50 text-gray-800';
-                    colorContainer.innerHTML += `<button type="button" onclick="selectColor('${col}')" id="col_${col}" class="px-3.5 py-1.5 rounded-xl text-xs font-bold border ${activeClass} transition-all">${col}</button>`;
-                });
-            }
             
             document.getElementById('btnOpenCheckout').onclick = () => { closeModal('modalProductDetails'); openModal('modalCheckout'); };
             openModal('modalProductDetails');
-        }
-
-        function selectColor(color) {
-            selectedColor = color;
-            currentSelectedProduct.colors.forEach(col => {
-                const btn = document.getElementById(`col_${col}`);
-                if(btn) {
-                    if(col === color) btn.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold border border-brand-900 bg-brand-900 text-white transition-all";
-                    else btn.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold border border-gray-200 bg-gray-50 text-gray-800 transition-all";
-                }
-            });
         }
 
         function submitOrder(e) {
@@ -492,16 +444,13 @@
             const phone = document.getElementById('clientPhone').value;
             const address = document.getElementById('clientAddress').value;
             
-            const msg = `🛒 *طلب جديد عبر موقع Electro Ayman*\n\n` +
+            const msg = `*🛒 طلب جديد من الموقع (Electro Ayman)*\n\n` +
                         `📱 *الهاتف:* ${p.brand} ${p.model}\n` +
-                        `🎨 *اللون المختار:* ${selectedColor}\n` +
                         `💾 *التخزين:* ${p.storage} | ⚡ *الرام:* ${p.ram}\n` +
-                        `🔋 *البطارية:* ${p.battery} | 🛡️ *الضمان:* ${p.warranty}\n` +
-                        `💵 *الثمن النهائي:* ${formatPrice(p.price)}\n\n` +
-                        `👤 *معلومات الزبون:*\n` +
-                        `• الاسم: ${name}\n` +
-                        `• الهاتف: ${phone}\n` +
-                        `• العنوان: ${address}`;
+                        `🎨 *اللون:* ${p.color} | 🔋 *البطارية:* ${p.battery}\n` +
+                        `💵 *الثمن:* ${formatPrice(p.price)}\n\n` +
+                        `*👤 معلومات الزبون:*\n` +
+                        `الاسم: ${name}\nالهاتف: ${phone}\nالعنوان: ${address}`;
             
             closeModal('modalCheckout'); document.getElementById('checkoutForm').reset();
             window.open(`https://wa.me/212657942294?text=${encodeURIComponent(msg)}`, '_blank');
@@ -524,8 +473,8 @@
 
         function forgotPassword() {
             const em = document.getElementById('adminEmail').value;
-            if(!em) showLoginAlert("المرجو إدخال البريد الإلكتروني أولاً في خانة الإيميل");
-            else showLoginAlert("تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني بنجاح", "green");
+            if(!em) showLoginAlert("المرجو إدخال البريد الإلكتروني أولاً");
+            else showLoginAlert("تم إرسال رابط استعادة كلمة السر إلى بريدك بنجاح", "green");
         }
         
         function handleLogout() { closeModal('modalAdminDashboard'); }
@@ -534,10 +483,9 @@
             const tbody = document.getElementById('adminProductsList'); tbody.innerHTML = '';
             allProducts.forEach(p => {
                 const stock = p.inStock ? '<span class="text-green-600 font-bold bg-green-50 px-2 py-1 rounded">متوفر</span>' : '<span class="text-red-600 font-bold bg-red-50 px-2 py-1 rounded">نفذ</span>';
-                const mainImg = p.images && p.images.length > 0 ? p.images[0] : '';
                 tbody.innerHTML += `
                     <tr class="border-b border-gray-100 hover:bg-gray-50">
-                        <td class="p-3 w-16"><img src="${mainImg}" class="w-12 h-12 object-contain rounded border p-1 bg-white"></td>
+                        <td class="p-3 w-16"><img src="${p.image}" class="w-12 h-12 object-contain rounded border p-1 bg-white"></td>
                         <td class="p-3" dir="ltr"><b>${p.brand}</b> ${p.model}<br><span class="text-xs text-gray-500">${p.storage} / ${p.condition}</span></td>
                         <td class="p-3 font-bold text-brand-900">${p.price} DH</td>
                         <td class="p-3">${stock}</td>
@@ -553,24 +501,13 @@
 
         function saveProduct(e) {
             e.preventDefault();
-            const imagesRaw = document.getElementById('prodImages').value;
-            const imagesArr = imagesRaw.split(',').map(img => img.trim()).filter(img => img.length > 0);
-            const colorsRaw = document.getElementById('prodColors').value;
-            const colorsArr = colorsRaw.split(',').map(c => c.trim()).filter(c => c.length > 0);
-
             const newP = {
-                id: document.getElementById('prodId').value, 
-                brand: document.getElementById('prodBrand').value,
-                model: document.getElementById('prodModel').value, 
-                storage: document.getElementById('prodStorage').value,
-                ram: document.getElementById('prodRam').value, 
-                colors: colorsArr.length ? colorsArr : ["أسود", "فضي"],
-                battery: document.getElementById('prodBattery').value, 
-                condition: document.getElementById('prodCondition').value,
-                warranty: document.getElementById('prodWarranty').value, 
-                price: Number(document.getElementById('prodPrice').value),
-                images: imagesArr.length ? imagesArr : ["https://placehold.co/400x500/f3f4f6/000000?text=Phone"], 
-                inStock: document.getElementById('prodInStock').checked
+                id: document.getElementById('prodId').value, brand: document.getElementById('prodBrand').value,
+                model: document.getElementById('prodModel').value, storage: document.getElementById('prodStorage').value,
+                ram: document.getElementById('prodRam').value, color: document.getElementById('prodColor').value,
+                battery: document.getElementById('prodBattery').value, condition: document.getElementById('prodCondition').value,
+                warranty: document.getElementById('prodWarranty').value, price: Number(document.getElementById('prodPrice').value),
+                image: document.getElementById('prodImage').value, inStock: document.getElementById('prodInStock').checked
             };
             allProducts.unshift(newP); localStorage.setItem('electro_phones_db', JSON.stringify(allProducts));
             renderAdmin(); renderProducts(); closeModal('modalProductForm');
